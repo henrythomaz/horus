@@ -1,0 +1,40 @@
+services:
+
+  api:
+    build:
+      context: ../../apps/api
+
+    ports:
+      - "8000:8000"
+
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:17
+
+    environment:
+      POSTGRES_USER: analista
+      POSTGRES_PASSWORD: Horus2026
+      POSTGRES_DB: horus_bd
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  nginx:
+    image: nginx:latest
+
+    ports:
+      - "80:80"
+
+    volumes:
+      - ../nginx/nginx.conf:/etc/nginx/nginx.conf
+
+    depends_on:
+      - api
+
+volumes:
+  postgres_data:
