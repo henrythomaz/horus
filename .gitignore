@@ -7,18 +7,80 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Dependencies
 node_modules
+
+# Build
 dist
 dist-ssr
+coverage
+
+# Environment
+.env
+.env.*
+!.env.example
+
+# Local configs
 *.local
 
-# Editor directories and files
+# IDEs
 .vscode/*
 !.vscode/extensions.json
 .idea
+
+# OS
 .DS_Store
+Thumbs.db
+
+# VS / Windows
 *.suo
 *.ntvs*
 *.njsproj
 *.sln
 *.sw?
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Jupyter
+.ipynb_checkpoints
+
+# ML Models
+*.pt
+*.pth
+*.onnx
+*.engine
+
+# Datasets
+data/raw/*
+data/processed/*
+data/datasets/*
+
+# Keep folder structure
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+!data/datasets/.gitkeep
+
+# Experiments
+runs/
+wandb/
+
+# Docker
+docker-compose.override.yml
+
+# PostgreSQL dumps
+*.sql
+
+# Temporary files
+tmp/
+temp/
+.cache/
+
+# Geo data
+*.tif
+*.tiff
+*.geojson
+*.shp
