@@ -153,6 +153,10 @@ Desenvolver um sistema inteligente capaz de detectar potenciais focos de dengue 
 - GitHub Actions
 
 ---
+# Database Schema
+
+![Horus DER](docs/diagrams/horus_erd.png)
+---
 
 # Estrutura Inicial da Solução
 
