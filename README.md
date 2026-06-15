@@ -155,7 +155,7 @@ Desenvolver um sistema inteligente capaz de detectar potenciais focos de dengue 
 ---
 # Database Schema
 
-![Horus DER](docs/diagrams/horus_der.png)
+![Horus DER](docs/diagrams/database_der.png)
 ---
 
 # Estrutura Inicial da Solução
