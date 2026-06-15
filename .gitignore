@@ -84,3 +84,7 @@ temp/
 *.tiff
 *.geojson
 *.shp
+
+# Ignorar arquivos Zone.Identifier
+*:Zone.Identifier
+*.Identifier
