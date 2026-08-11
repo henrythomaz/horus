@@ -1,0 +1,601 @@
+Backend e Rede Neural do Horus
+Objetivo
+
+Este documento define o plano de desenvolvimento da parte de Backend e Inteligência Artificial do Horus durante os próximos 15 dias.
+
+O desenvolvimento será feito em uma ordem incremental:
+
+Criar e validar o MVP da rede neural.
+Garantir que o modelo consiga realizar inferências.
+Estruturar o banco de dados.
+Integrar o modelo ao banco.
+Criar a API.
+Integrar imagens, missões e detecções.
+Implementar georreferenciamento e cálculo de risco.
+Integrar tudo em um backend funcional.
+
+A prioridade é não construir infraestrutura em cima de uma IA que ainda não foi validada.
+
+Tecnologias
+Inteligência Artificial
+Python
+PyTorch
+Torchvision
+Ultralytics YOLO
+OpenCV
+NumPy
+Albumentations
+Backend
+FastAPI
+Uvicorn
+Pydantic
+Python-dotenv
+SQLAlchemy
+Psycopg
+Banco de dados
+PostgreSQL
+PostGIS
+Infraestrutura
+Docker
+Docker Compose
+GitHub
+Dataset
+
+O projeto utilizará inicialmente o dataset:
+
+Aedes Mosquito Breeding Habitat Detection
+
+O dataset está disponibilizado em formato YOLOv8 e possui:
+
+train/
+valid/
+test/
+
+Com as classes:
+
+coconut_shell
+drum
+other_containers
+tire
+water_tank
+
+O dataset possui aproximadamente 2.821 imagens.
+
+As imagens já possuem suas respectivas anotações .txt no formato YOLO.
+
+Portanto, não será necessário recriar as anotações inicialmente.
+
+Estrutura inicial
+
+A parte de IA deverá ser organizada aproximadamente assim:
+
+ai/
+├── dataset/
+│   └── data.yaml
+│
+├── train.py
+├── predict.py
+├── evaluate.py
+│
+├── models/
+│
+└── README.md
+
+Os arquivos pesados do dataset e os modelos treinados não devem ser enviados para o GitHub.
+
+Exemplo de .gitignore:
+
+ai/dataset/images/
+ai/dataset/labels/
+ai/models/*.pt
+runs/
+Plano de 15 dias
+Dia 1 — Criar o MVP da IA
+
+O primeiro objetivo é fazer a rede neural funcionar isoladamente.
+
+Não criar banco de dados ainda.
+
+Não criar API ainda.
+
+Não integrar com React ainda.
+
+Preparar:
+
+dataset
+   ↓
+YOLO
+   ↓
+treinamento
+   ↓
+modelo
+
+Criar o primeiro train.py.
+
+Treinar inicialmente um modelo pequeno para obter um baseline.
+
+Resultado esperado:
+
+ai/models/
+└── horus-v1/
+    └── weights/
+        └── best.pt
+Entrega do dia
+
+Um modelo treinado:
+
+best.pt
+Dia 2 — Validar o modelo
+
+Executar o modelo utilizando o conjunto de validação e o conjunto de teste.
+
+Analisar:
+
+Precision
+Recall
+mAP@50
+mAP@50-95
+desempenho por classe
+
+Registrar os resultados.
+
+Exemplo:
+
+Model: Horus v1
+
+Precision: ...
+Recall: ...
+mAP50: ...
+mAP50-95: ...
+
+Também realizar inferências visualmente.
+
+Resultado esperado:
+
+imagem
+   ↓
+modelo
+   ↓
+bounding boxes
+   ↓
+classe
+   ↓
+confiança
+Entrega
+
+Confirmar que:
+
+O modelo consegue receber uma imagem e retornar detecções.
+
+Dia 3 — Testar generalização
+
+Agora utilizar imagens que não participaram do treinamento.
+
+O objetivo é verificar se o modelo realmente consegue detectar os objetos em imagens diferentes das utilizadas durante o treinamento.
+
+Testar:
+
+imagens aéreas diferentes;
+diferentes distâncias;
+diferentes tamanhos dos objetos;
+diferentes condições de iluminação.
+
+A principal pergunta será:
+
+O modelo está aprendendo os objetos ou apenas reconhecendo padrões muito específicos do dataset?
+
+Entrega
+
+Primeira avaliação prática do modelo.
+
+Dia 4 — Melhorar o modelo
+
+Com base nos resultados dos três primeiros dias, realizar ajustes.
+
+Avaliar:
+
+tamanho do modelo;
+imgsz;
+número de épocas;
+batch;
+learning rate;
+augmentation;
+Albumentations;
+confiança mínima.
+
+Treinar uma segunda versão:
+
+horus-v2
+
+Comparar com:
+
+horus-v1
+Entrega
+
+Escolher uma primeira configuração considerada adequada para o projeto.
+
+Dia 5 — Definir o modelo oficial do MVP
+
+Comparar os experimentos.
+
+Criar uma tabela:
+
+Modelo	Precision	Recall	mAP50	mAP50-95
+Horus v1	—	—	—	—
+Horus v2	—	—	—	—
+
+Escolher o modelo que será utilizado inicialmente pelo backend.
+
+Exemplo:
+
+models/
+└── horus-best.pt
+
+A partir desse momento, o modelo passa a ser tratado como um componente do sistema.
+
+Dia 6 — Criar o banco de dados
+
+Agora que o comportamento básico da IA está definido, começar o PostgreSQL.
+
+Implementar o DER já definido para o projeto.
+
+As principais entidades serão:
+
+organizations
+users
+missions
+images
+detections
+detection_classes
+risk_areas
+reports
+
+A estrutura deve representar o que realmente acontece durante uma missão.
+
+Uma missão começa quando uma organização solicita o monitoramento de determinada região.
+
+O drone captura imagens.
+
+As imagens são processadas.
+
+A IA produz detecções.
+
+As detecções podem gerar áreas de risco.
+
+Dia 7 — Relacionar o banco com o dataset e as detecções
+
+Criar a estrutura responsável por representar no banco aquilo que o modelo produz.
+
+Uma imagem poderá possuir várias detecções:
+
+images
+   │
+   └── detections
+          │
+          └── detection_classes
+
+Uma detecção deverá armazenar informações como:
+
+id
+image_id
+class_id
+confidence
+x
+y
+width
+height
+
+A classe representa o objeto detectado:
+
+coconut_shell
+drum
+other_containers
+tire
+water_tank
+
+O banco não precisa armazenar o .txt do dataset como texto bruto.
+
+Ele deve armazenar os dados resultantes da interpretação da anotação/detecção.
+
+Dia 8 — Criar o pipeline de inferência
+
+Criar um módulo Python responsável por:
+
+imagem
+   ↓
+YOLO
+   ↓
+detecções
+   ↓
+resultado estruturado
+
+Por exemplo:
+
+[
+    {
+        "class": "water_tank",
+        "confidence": 0.91,
+        "bbox": [...]
+    }
+]
+
+Esse módulo será utilizado posteriormente pela API.
+
+O objetivo é separar:
+
+IA
+
+de:
+
+HTTP/API
+
+Assim, o FastAPI não precisa conhecer os detalhes internos do treinamento.
+
+Dia 9 — Integrar inferência + PostgreSQL
+
+Agora conectar:
+
+imagem
+   ↓
+modelo
+   ↓
+detecções
+   ↓
+PostgreSQL
+
+Uma imagem processada deverá gerar registros de detecção.
+
+Exemplo:
+
+images
+   id = 42
+
+pode gerar:
+
+detections
+
+id | image_id | class | confidence
+1  | 42       | tire  | 0.94
+2  | 42       | drum  | 0.87
+Entrega
+
+O backend consegue persistir automaticamente os resultados da IA.
+
+Dia 10 — Criar o FastAPI
+
+Criar a API responsável por disponibilizar o sistema.
+
+Estrutura inicial:
+
+api/
+├── main.py
+├── routers/
+├── services/
+├── models/
+├── schemas/
+└── database/
+
+Criar endpoints para:
+
+POST /missions
+GET  /missions
+GET  /missions/{id}
+
+POST /images
+GET  /images/{id}
+
+POST /images/{id}/process
+
+GET /detections
+GET /missions/{id}/detections
+Dia 11 — Criar o processamento completo
+
+Implementar o endpoint principal de processamento.
+
+Exemplo:
+
+POST /images/{id}/process
+
+Funcionamento:
+
+API
+ ↓
+localiza imagem
+ ↓
+YOLO
+ ↓
+detecta objetos
+ ↓
+salva detecções
+ ↓
+retorna resultado
+
+Resposta aproximada:
+
+{
+  "image_id": 42,
+  "detections": [
+    {
+      "class": "water_tank",
+      "confidence": 0.91
+    },
+    {
+      "class": "tire",
+      "confidence": 0.87
+    }
+  ]
+}
+Dia 12 — Georreferenciamento
+
+Integrar as informações geográficas das imagens.
+
+Cada imagem de drone poderá possuir:
+
+latitude
+longitude
+altitude
+captured_at
+
+Essas informações serão associadas à missão e às imagens.
+
+Utilizar:
+
+PostGIS
+Shapely
+GeoPandas
+
+Objetivo:
+
+imagem
+ ↓
+detecção
+ ↓
+posição geográfica
+ ↓
+ponto no mapa
+Dia 13 — Sistema de risco
+
+Criar a primeira versão do cálculo de risco.
+
+Importante:
+
+o modelo de visão computacional não precisa ser responsável diretamente por decidir o risco epidemiológico.
+
+Ele detecta objetos.
+
+O backend pode utilizar essas detecções para calcular uma pontuação.
+
+Exemplo conceitual:
+
+water_tank      → peso X
+tire            → peso Y
+drum            → peso Z
+container       → peso W
+
+Combinando:
+
+tipo
++
+confiança
++
+quantidade
++
+localização
+
+para gerar:
+
+risk_score
+
+O resultado poderá alimentar:
+
+risk_areas
+Dia 14 — Teste completo do backend
+
+Executar o sistema completo:
+
+imagem de drone
+       ↓
+upload
+       ↓
+FastAPI
+       ↓
+YOLO
+       ↓
+detecções
+       ↓
+PostgreSQL
+       ↓
+georreferenciamento
+       ↓
+risk_score
+       ↓
+resultado
+
+Testar:
+
+upload;
+processamento;
+persistência;
+detecções;
+coordenadas;
+cálculo de risco;
+erros;
+imagens inválidas;
+modelo indisponível;
+banco indisponível.
+
+Também preparar o Docker para executar o backend e a IA.
+
+Dia 15 — Consolidar o MVP
+
+O último dia será dedicado à integração e estabilização.
+
+O sistema deverá conseguir executar:
+
+Criar missão
+     ↓
+Enviar imagens
+     ↓
+Processar imagens
+     ↓
+Executar rede neural
+     ↓
+Registrar detecções
+     ↓
+Associar localização
+     ↓
+Calcular risco
+     ↓
+Disponibilizar resultados pela API
+
+Revisar:
+
+código;
+Docker;
+variáveis de ambiente;
+banco;
+migrations;
+documentação;
+endpoints;
+modelo;
+logs;
+tratamento de erros.
+
+Criar a versão:
+
+Horus MVP v1.0
+Resultado esperado ao final dos 15 dias
+
+Ao final deste período, a parte de Backend + IA deverá possuir:
+
+┌───────────────────────────┐
+│       MODELO YOLO         │
+│       horus-best.pt       │
+└─────────────┬─────────────┘
+              │
+              ▼
+┌───────────────────────────┐
+│      PIPELINE DE IA       │
+│       Python/PyTorch      │
+└─────────────┬─────────────┘
+              │
+              ▼
+┌───────────────────────────┐
+│          FastAPI          │
+└─────────────┬─────────────┘
+              │
+              ▼
+┌───────────────────────────┐
+│        PostgreSQL         │
+│          PostGIS          │
+└─────────────┬─────────────┘
+              │
+              ▼
+┌───────────────────────────┐
+│       DETECÇÕES           │
+│    LOCALIZAÇÃO + RISCO    │
+└───────────────────────────┘
+
+O princípio principal do desenvolvimento será:
+
+Primeiro provar que a IA funciona. Depois transformar essa IA em um serviço. Depois persistir seus resultados. Depois disponibilizar esses resultados através da API.
