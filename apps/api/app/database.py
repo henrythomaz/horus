@@ -1,14 +1,28 @@
+import os
+
+from dotenv import load_dotenv
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-DATABASE_URL = (
-    "postgresql+psycopg://analista:Horus2026@localhost:5432/horus_bd"
-)
+load_dotenv()
 
-engine = create_engine(DATABASE_URL)
+DATABASE_URL = os.environ["DATABASE_URL"]
+
+engine = create_engine(
+    DATABASE_URL,
+    pool_pre_ping=True,
+)
 
 SessionLocal = sessionmaker(
-        autocommit = False,
-        autoflush  = False,
-        bind       = engine
+    autocommit=False,
+    autoflush=False,
+    bind=engine,
 )
+
+
+def get_db():
+    db = SessionLocal()
+    try:
+        yield db
+    finally:
+        db.close()

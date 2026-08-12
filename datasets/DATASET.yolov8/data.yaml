@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 5
+names: ['cocunut_shell', 'drum', 'other_containers', 'tire', 'water_tank']
+
+roboflow:
+  workspace: aedesbreedinghotspotidentification
+  project: aedes_breeding_hotspot_detection
+  version: 1
+  license: Private
+  url: https://app.roboflow.com/aedesbreedinghotspotidentification/aedes_breeding_hotspot_detection/1

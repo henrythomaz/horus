@@ -65,7 +65,6 @@ data/datasets/*
 !data/datasets/.gitkeep
 
 # Experiments
-runs/
 wandb/
 
 # Docker
@@ -88,3 +87,11 @@ temp/
 # Ignorar arquivos Zone.Identifier
 *:Zone.Identifier
 *.Identifier
+
+# datasets
+datasets/DATASET.yolov8/train/
+datasets/DATASET.yolov8/train/
+datasets/DATASET.yolov8/test/
+datasets/DATASET.yolov8/test/
+datasets/DATASET.yolov8/valid/
+datasets/DATASET.yolov8/valid/

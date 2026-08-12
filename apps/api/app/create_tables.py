@@ -1,10 +1,10 @@
-from database import engine
+from .database import engine
+from .models import Base
 
-from models.base import Base
+# Importa todos os modelos para que eles sejam registrados no metadata.
+from . import models  # noqa: F401
 
-# importa os modelos
-import models
 
-Base.metadata.create_all(engine)
-
-print("Tabelas criadas com sucesso!")
+if __name__ == "__main__":
+    Base.metadata.create_all(engine)
+    print("Tabelas criadas com sucesso!")
