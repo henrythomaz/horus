@@ -3,7 +3,7 @@ from pathlib import Path
 from ultralytics import YOLO
 
 
-MODEL_PATH = Path("models/best.pt")
+MODEL_PATH = Path("models/best2.pt")
 
 _model = None
 
