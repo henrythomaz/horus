@@ -49,7 +49,7 @@ venv/
 .ipynb_checkpoints
 
 # ML Models
-*.pt
+# *.pt
 *.pth
 *.onnx
 *.engine
