@@ -1,11 +1,19 @@
 from ultralytics import YOLO
+import sys
 
-MODEL = "../runs/detect/runs/horus_mvp-3/weights/best.pt"
+if len(sys.argv) < 2:
+    print("Erro: Você deve passar o caminho da imagem!")
+    print("Uso correto: python predict.py tests/DJI_012.jpg")
+    sys.exit(1)
+
+IMAGEM_REQUISITADA = sys.argv[1]
+
+MODEL = "../runs/detect/runs/horus_mvp-5/weights/best.pt"
 
 model = YOLO(MODEL)
 
 results = model.predict(
-    source="tests/DJI_012.jpg",
+    source=IMAGEM_REQUISITADA,
     conf=0.25,
     save=True
 )

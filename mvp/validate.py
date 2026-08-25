@@ -1,6 +1,6 @@
 from ultralytics import YOLO
 
-model = YOLO("../runs/detect/runs/horus_mvp-3/weights/best.pt")
+model = YOLO("../runs/detect/runs/horus_mvp-5/weights/best.pt")
 
 metrics = model.val(
         data="/home/henry/projetos/horus/datasets/DATASET.yolov8/data.yaml",
