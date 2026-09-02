@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_584d0bf6b42288de02456ccfe34a443d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+    <div style="
+        position:fixed;
+        top:10px;
+        left:50%;
+        transform:translateX(-50%);
+        z-index:9999;
+        background:rgba(255,255,255,.96);
+        padding:9px 16px;
+        border-radius:8px;
+        box-shadow:0 1px 6px rgba(0,0,0,.25);
+        font-family:Arial,sans-serif;
+        font-size:16px;
+        font-weight:bold;
+        white-space:nowrap;
+    ">
+        HORUS — Mapa de áreas de risco
+    </div>
+    
+    
+    <div style="
+        position:fixed;
+        top:62px;
+        left:10px;
+        z-index:9999;
+        background:rgba(255,255,255,.96);
+        border:1px solid #aaa;
+        border-radius:8px;
+        padding:10px;
+        width:190px;
+        box-shadow:0 1px 6px rgba(0,0,0,.20);
+        font-family:Arial,sans-serif;
+        font-size:12px;
+    ">
+        <div style="
+            font-size:14px;
+            font-weight:bold;
+            margin-bottom:7px;
+        ">
+            Resumo da missão
+        </div>
+
+        <div>
+            Imagens: <b>20</b>
+        </div>
+
+        <div>
+            Detecções: <b>18</b>
+        </div>
+
+        <div>
+            Score total:
+            <b>11.5431</b>
+        </div>
+
+        <div>
+            Áreas geradas: <b>2</b>
+        </div>
+
+        <hr style="
+            border:none;
+            border-top:1px solid #ddd;
+            margin:7px 0;
+        ">
+
+        <div>
+            Muito baixo: <b>15</b>
+        </div>
+
+        <div>
+            Baixo: <b>5</b>
+        </div>
+
+        <div>
+            Médio: <b>0</b>
+        </div>
+
+        <div>
+            Alto: <b>0</b>
+        </div>
+    </div>
+    
+    
+    <div style="
+        position:fixed;
+        bottom:30px;
+        left:10px;
+        z-index:9999;
+        background:rgba(255,255,255,.96);
+        border:1px solid #aaa;
+        border-radius:8px;
+        padding:10px;
+        min-width:150px;
+        box-shadow:0 1px 6px rgba(0,0,0,.20);
+        font-family:Arial,sans-serif;
+        font-size:12px;
+    ">
+        <div style="
+            font-weight:bold;
+            margin-bottom:7px;
+        ">
+            Legenda
+        </div>
+        
+        <div style="margin:4px 0;">
+            <span style="
+                display:inline-block;
+                width:13px;
+                height:13px;
+                border-radius:3px;
+                background:#C62828;
+                margin-right:6px;
+                vertical-align:middle;
+            "></span>
+            Alto
+        </div>
+        
+        <div style="margin:4px 0;">
+            <span style="
+                display:inline-block;
+                width:13px;
+                height:13px;
+                border-radius:3px;
+                background:#EF6C00;
+                margin-right:6px;
+                vertical-align:middle;
+            "></span>
+            Médio
+        </div>
+        
+        <div style="margin:4px 0;">
+            <span style="
+                display:inline-block;
+                width:13px;
+                height:13px;
+                border-radius:3px;
+                background:#F9A825;
+                margin-right:6px;
+                vertical-align:middle;
+            "></span>
+            Baixo
+        </div>
+        
+        <div style="margin:4px 0;">
+            <span style="
+                display:inline-block;
+                width:13px;
+                height:13px;
+                border-radius:3px;
+                background:#2E7D32;
+                margin-right:6px;
+                vertical-align:middle;
+            "></span>
+            Muito baixo
+        </div>
+        
+        <hr style="
+            border:none;
+            border-top:1px solid #ddd;
+            margin:7px 0;
+        ">
+        <div style="
+            font-size:10px;
+            color:#666;
+        ">
+            Áreas = hotspots de priorização
+        </div>
+    </div>
+    
+    
+            <div class="folium-map" id="map_584d0bf6b42288de02456ccfe34a443d" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_584d0bf6b42288de02456ccfe34a443d = L.map(
+                "map_584d0bf6b42288de02456ccfe34a443d",
+                {
+                    center: [43.306501304999315, -77.70651135000017],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 19,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+            L.control.scale().addTo(map_584d0bf6b42288de02456ccfe34a443d);
+
+            
+
+        
+    
+            var tile_layer_c48bc8df336c9c9ef08fbbc0661eb5b3 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_c48bc8df336c9c9ef08fbbc0661eb5b3.addTo(map_584d0bf6b42288de02456ccfe34a443d);
+        
+    
+            var feature_group_cc9c667500e87c03f423aaeb3824ba13 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var poly_line_8c3c1073e973806ecbc3015db7e4b585 = L.polyline(
+                [[43.306473999999994, -77.70654020003848], [43.30647359994042, -77.70653929995018], [43.30647620000667, -77.70653769999822], [43.306473, -77.706539], [43.306472799999995, -77.70653810003357], [43.30647449994763, -77.70653329999166], [43.306474200023615, -77.70653689998973], [43.30647340000551, -77.70653789999699], [43.306472799999995, -77.7065383000018], [43.30647330000362, -77.70653850000001], [43.30647330000362, -77.70653800000001], [43.30647330000362, -77.70653739997975], [43.3064724, -77.70653760005875], [43.306473, -77.70653719998738], [43.30647340000551, -77.70653850000001], [43.30647340000551, -77.706539], [43.30648520005949, -77.7065275999431], [43.30655629998961, -77.70645830002665], [43.30665479996125, -77.70636540000696], [43.30675320003029, -77.7062688]],
+                {"bubblingMouseEvents": true, "color": "#1976D2", "dashArray": "8,6", "dashOffset": null, "fill": false, "fillColor": "#1976D2", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3}
+            ).addTo(feature_group_cc9c667500e87c03f423aaeb3824ba13);
+        
+    
+            poly_line_8c3c1073e973806ecbc3015db7e4b585.bindTooltip(
+                `<div>
+                     Percurso aproximado pelas imagens
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_cc9c667500e87c03f423aaeb3824ba13.addTo(map_584d0bf6b42288de02456ccfe34a443d);
+        
+    
+            var feature_group_0fdfc329fea11ed05e344ca5e5b3d671 = L.featureGroup(
+                {
+}
+            );
+        
+    
+        function geo_json_2b9360463ef905494d341329ec83f74e_styler(feature) {
+            switch(feature.properties.feature_type) {
+                default:
+                    return {"color": "#F9A825", "fillColor": "#F9A825", "fillOpacity": 0.32, "weight": 2};
+            }
+        }
+        function geo_json_2b9360463ef905494d341329ec83f74e_highlighter(feature) {
+            switch(feature.properties.feature_type) {
+                default:
+                    return {"color": "#F9A825", "fillColor": "#F9A825", "fillOpacity": 0.45, "weight": 3};
+            }
+        }
+
+        function geo_json_2b9360463ef905494d341329ec83f74e_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_2b9360463ef905494d341329ec83f74e.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_2b9360463ef905494d341329ec83f74e_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_2b9360463ef905494d341329ec83f74e = L.geoJson(null, {
+                onEachFeature: geo_json_2b9360463ef905494d341329ec83f74e_onEachFeature,
+            
+                style: geo_json_2b9360463ef905494d341329ec83f74e_styler,
+            ...{
+}
+        });
+
+        function geo_json_2b9360463ef905494d341329ec83f74e_add (data) {
+            geo_json_2b9360463ef905494d341329ec83f74e
+                .addData(data);
+        }
+            geo_json_2b9360463ef905494d341329ec83f74e_add({"features": [{"geometry": {"coordinates": [[[-77.70650592702042, 43.30641408632688], [-77.7065100030787, 43.30641296604578], [-77.70651415095358, 43.30641199762115], [-77.70651836011788, 43.30641118351079], [-77.7065226198889, 43.30641052578091], [-77.7065269194555, 43.30641002610079], [-77.70653124790552, 43.30640968573861], [-77.7065355942535, 43.30640950555819], [-77.70653994746858, 43.30640948601683], [-77.70654429650246, 43.306409627164115], [-77.70654863031741, 43.30640992864182], [-77.7065529379144, 43.3064103896848], [-77.70655720836088, 43.30641100912297], [-77.70656143081861, 43.30641178538419], [-77.70656559457116, 43.30641271649834], [-77.70656968905105, 43.306413800102305], [-77.70657038904926, 43.30641400010231], [-77.70657426302085, 43.30641518719927], [-77.70657805372754, 43.30641651080687], [-77.7065817522185, 43.30641796779973], [-77.70658534976067, 43.30641955473753], [-77.70658883785936, 43.3064212678731], [-77.70659220827824, 43.306423103161286], [-77.70659545305894, 43.30642505626853], [-77.7065985645397, 43.30642712258303], [-77.70660153537352, 43.30642929722572], [-77.70660435854553, 43.30643157506169], [-77.70660702738948, 43.30643395071242], [-77.70660953560359, 43.30643641856838], [-77.7066118772653, 43.306438972802354], [-77.70661404684537, 43.30644160738313], [-77.70661603922089, 43.30644431608982], [-77.70661784968732, 43.306447092526454], [-77.70661947396971, 43.3064499301372], [-77.70662090823274, 43.306452822221715], [-77.70662214908971, 43.30645576195106], [-77.70662319361067, 43.306458742383796], [-77.70662403932924, 43.30646175648238], [-77.70662468424845, 43.306464797129735], [-77.70662512684551, 43.306467857146146], [-77.70662536607531, 43.30647092930613], [-77.70662540137297, 43.30647400635555], [-77.70662523265518, 43.30647708102871], [-77.70662486032028, 43.30648014606553], [-77.70662428524747, 43.30648319422868], [-77.70662350879462, 43.30648621832069], [-77.70662253279517, 43.30648921120089], [-77.70662135955367, 43.30649216580236], [-77.70661999184044, 43.306495075148526], [-77.70661843288502, 43.30649793236968], [-77.70661668636848, 43.306500730719215], [-77.70661475641478, 43.30650346358951], [-77.70661264758104, 43.306506124527566], [-77.70661036484677, 43.30650870725024], [-77.70660791360204, 43.30651120565908], [-77.70660529963489, 43.3065136138547], [-77.70660252911753, 43.306515926150745], [-77.70659960859187, 43.306518137087295], [-77.70659654495402, 43.30652024144378], [-77.70659334543798, 43.306522234251275], [-77.70659001759864, 43.30652411080426], [-77.70658656929385, 43.30652586667172], [-77.70658300866592, 43.306527497707606], [-77.70657934412242, 43.30652900006063], [-77.70657558431625, 43.30653037018336], [-77.70657173812528, 43.306531604840586], [-77.70657073812527, 43.306531904844206], [-77.70656642889004, 43.30653310035341], [-77.7065617288817, 43.306534300297436], [-77.70655769192345, 43.30653525023721], [-77.70655359624055, 43.306536053918], [-77.70654945169355, 43.30653670940493], [-77.70654526826063, 43.306537215119874], [-77.70654105601358, 43.30653756984529], [-77.70653682509355, 43.30653777272718], [-77.7065325856867, 43.3065378232771], [-77.70652834799957, 43.306537721373324], [-77.70652412223457, 43.3065374672612], [-77.70651991856542, 43.30653706155253], [-77.70651574711263, 43.30653650522407], [-77.70651161791919, 43.30653579961518], [-77.70650754092627, 43.30653494642468], [-77.70650352594943, 43.30653394770664], [-77.70649958265489, 43.30653280586552], [-77.70649572053631, 43.306531523650364], [-77.70649194889191, 43.306530104148145], [-77.70648827680209, 43.30652855077639], [-77.70648471310759, 43.306526867274904], [-77.70648126638811, 43.30652505769678], [-77.7064779449418, 43.30652312639869], [-77.7064747567652, 43.30652107803027], [-77.70647170953397, 43.30651891752309], [-77.70646881058445, 43.30651665007866], [-77.70646606689601, 43.306514281155955], [-77.70646348507418, 43.30651181645824], [-77.7064610713348, 43.30650926191941], [-77.70645883148909, 43.3065066236896], [-77.70645677092955, 43.30650390812048], [-77.70645489461705, 43.30650112174992], [-77.70645320706892, 43.30649827128619], [-77.706451712348, 43.30649536359192], [-77.7064504140529, 43.30649240566752], [-77.70644931530931, 43.30648940463433], [-77.70644841876252, 43.30648636771744], [-77.706447726571, 43.30648330222838], [-77.70644724040122, 43.306480215547445], [-77.70644696142367, 43.30647711510596], [-77.70644689030998, 43.30647400836836], [-77.70644702723138, 43.30647090281426], [-77.70644737185822, 43.30646780592041], [-77.70644792336078, 43.30646472514274], [-77.70644868041133, 43.306461667898326], [-77.7064496411872, 43.30645864154763], [-77.7064508033753, 43.30645565337673], [-77.70645216417762, 43.30645271057977], [-77.70645372031794, 43.30644982024167], [-77.70645546804981, 43.30644698932103], [-77.70645740316547, 43.30644422463343], [-77.70645952100605, 43.30644153283498], [-77.70646181647278, 43.30643892040628], [-77.7064642840392, 43.306436393636886], [-77.70646691776453, 43.3064339586101], [-77.70646971130797, 43.30643162118835], [-77.70647265794395, 43.3064293869991], [-77.7064757505783, 43.30642726142123], [-77.70647898176539, 43.30642524957218], [-77.70648234372597, 43.30642335629556], [-77.70648582836598, 43.30642158614951], [-77.70648942729602, 43.306419943395746], [-77.70649313185147, 43.30641843198927], [-77.70649693311348, 43.306417055568836], [-77.70650193312362, 43.30641535562119], [-77.70650592702042, 43.30641408632688]]], "type": "Polygon"}, "properties": {"center": {"latitude": 43.30647370148665, "longitude": -77.70653614223461}, "detections": 11, "detections_by_class": {"drum": 1, "other_containers": 6, "tire": 1, "water_tank": 3}, "feature_type": "risk_zone", "images": ["DJI_0004.jpg", "DJI_0006.jpg", "DJI_0009.jpg", "DJI_0011.jpg"], "images_count": 4, "risk_label": "Baixo", "risk_level": "LOW", "risk_score": 6.8919, "zone_margin_m": 7.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_2b9360463ef905494d341329ec83f74e.bindTooltip(
+                `<div>
+                     Área Baixo — 11 detecções
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_37fd169bd9d6ea25fa0853b0d571b523 = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_4d09323060f04c0fc497604bd3151fd3 = $(`<div id="html_4d09323060f04c0fc497604bd3151fd3" style="width: 100.0%; height: 100.0%;">     <div style="width:320px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">             Área de risco — Baixo         </h4>          <div style="             padding:8px;             background:#f5f5f5;             border-radius:6px;             margin-bottom:8px;         ">             <b>Score da zona:</b> 6.8919<br>             <b>Imagens:</b> 4<br>             <b>Detecções:</b> 11         </div>          <b>Classes detectadas</b>         <ul style='margin:5px 0;padding-left:18px;'><li>drum: 1</li><li>other_containers: 6</li><li>tire: 1</li><li>water_tank: 3</li></ul>          <b>Imagens da zona</b>         <div style="margin-top:4px;font-size:11px;">             DJI_0004.jpg<br>DJI_0006.jpg<br>DJI_0009.jpg<br>DJI_0011.jpg         </div>          <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             Hotspot de priorização do MVP.         </div>     </div>     </div>`)[0];
+                popup_37fd169bd9d6ea25fa0853b0d571b523.setContent(html_4d09323060f04c0fc497604bd3151fd3);
+            
+        
+
+        geo_json_2b9360463ef905494d341329ec83f74e.bindPopup(popup_37fd169bd9d6ea25fa0853b0d571b523)
+        ;
+
+        
+    
+    
+            geo_json_2b9360463ef905494d341329ec83f74e.addTo(feature_group_0fdfc329fea11ed05e344ca5e5b3d671);
+        
+    
+        function geo_json_dfebb54276a24cdaa5075e86b29bc00f_styler(feature) {
+            switch(feature.properties.feature_type) {
+                default:
+                    return {"color": "#F9A825", "fillColor": "#F9A825", "fillOpacity": 0.32, "weight": 2};
+            }
+        }
+        function geo_json_dfebb54276a24cdaa5075e86b29bc00f_highlighter(feature) {
+            switch(feature.properties.feature_type) {
+                default:
+                    return {"color": "#F9A825", "fillColor": "#F9A825", "fillOpacity": 0.45, "weight": 3};
+            }
+        }
+
+        function geo_json_dfebb54276a24cdaa5075e86b29bc00f_onEachFeature(feature, layer) {
+
+            layer.on({
+                mouseout: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                            geo_json_dfebb54276a24cdaa5075e86b29bc00f.resetStyle(e.target);
+                    }
+                },
+                mouseover: function(e) {
+                    if(typeof e.target.setStyle === "function"){
+                        const highlightStyle = geo_json_dfebb54276a24cdaa5075e86b29bc00f_highlighter(e.target.feature)
+                        e.target.setStyle(highlightStyle);
+                    }
+                },
+            });
+        };
+        var geo_json_dfebb54276a24cdaa5075e86b29bc00f = L.geoJson(null, {
+                onEachFeature: geo_json_dfebb54276a24cdaa5075e86b29bc00f_onEachFeature,
+            
+                style: geo_json_dfebb54276a24cdaa5075e86b29bc00f_styler,
+            ...{
+}
+        });
+
+        function geo_json_dfebb54276a24cdaa5075e86b29bc00f_add (data) {
+            geo_json_dfebb54276a24cdaa5075e86b29bc00f
+                .addData(data);
+        }
+            geo_json_dfebb54276a24cdaa5075e86b29bc00f_add({"features": [{"geometry": {"coordinates": [[[-77.70618249180205, 43.306750092795625], [-77.70618280381345, 43.30674699304656], [-77.70618332299719, 43.30674390825065], [-77.7061840481025, 43.30674084583947], [-77.70618497738258, 43.3067378131906], [-77.70618610859867, 43.306734817609986], [-77.7061874390256, 43.30673186631423], [-77.70618896545822, 43.30672896641326], [-77.70619068421928, 43.3067261248932], [-77.70619259116808, 43.30672334859952], [-77.70619468171063, 43.30672064422055], [-77.70619695081062, 43.30671801827137], [-77.70619939300163, 43.30671547707814], [-77.70620200240015, 43.3067130267628], [-77.70620477271994, 43.30671067322837], [-77.70620769728707, 43.306708422144744], [-77.70621076905599, 43.30670627893497], [-77.70621398062653, 43.306704248762216], [-77.70621732426174, 43.306702336517354], [-77.7062207919065, 43.30670054680715], [-77.70622437520699, 43.30669888394318], [-77.70622806553068, 43.30669735193141], [-77.70623185398728, 43.30669595446261], [-77.70623573145005, 43.30669469490339], [-77.70623968857787, 43.306693576288154], [-77.70624371583764, 43.30669260131173], [-77.70624780352738, 43.30669177232293], [-77.70625194179944, 43.30669109131885], [-77.70625612068439, 43.30669055994011], [-77.70626033011492, 43.30669017946682], [-77.70626455995013, 43.30668995081559], [-77.7062688, 43.30668987453726], [-77.70627304004988, 43.30668995081559], [-77.7062772698851, 43.30669017946682], [-77.70628147931563, 43.30669055994011], [-77.70628565820057, 43.30669109131885], [-77.70628979647265, 43.30669177232293], [-77.70629388416236, 43.30669260131173], [-77.70629791142215, 43.306693576288154], [-77.70630186854996, 43.30669469490339], [-77.70630574601273, 43.30669595446261], [-77.70630953446934, 43.30669735193141], [-77.70631322479304, 43.30669888394318], [-77.70631680809352, 43.30670054680715], [-77.70632027573828, 43.306702336517354], [-77.70632361937349, 43.306704248762216], [-77.70632683094404, 43.30670627893497], [-77.70632990271295, 43.306708422144744], [-77.70633282728008, 43.30671067322837], [-77.70633559759987, 43.3067130267628], [-77.7063382069984, 43.30671547707814], [-77.7063406491894, 43.30671801827137], [-77.7063429182894, 43.30672064422055], [-77.70634500883195, 43.30672334859952], [-77.70634691578074, 43.3067261248932], [-77.70634863454178, 43.30672896641326], [-77.70635016097442, 43.30673186631423], [-77.70635149140135, 43.306734817609986], [-77.70635262261744, 43.3067378131906], [-77.70635355189752, 43.30674084583947], [-77.70635427700283, 43.30674390825065], [-77.70635479618656, 43.30674699304656], [-77.70635510819797, 43.306750092795625], [-77.70635521228535, 43.30675320003029], [-77.70635510819797, 43.30675630726496], [-77.70635479618656, 43.30675940701403], [-77.70635427700283, 43.306762491809934], [-77.70635355189752, 43.306765554221116], [-77.70635262261744, 43.306768586869985], [-77.70635149140135, 43.3067715824506], [-77.70635016097442, 43.30677453374636], [-77.70634863454178, 43.306777433647326], [-77.70634691578074, 43.306780275167384], [-77.70634500883195, 43.30678305146107], [-77.7063429182894, 43.30678575584004], [-77.7063406491894, 43.30678838178922], [-77.7063382069984, 43.30679092298245], [-77.70633559759987, 43.306793373297786], [-77.70633282728008, 43.30679572683221], [-77.70632990271295, 43.30679797791584], [-77.70632683094404, 43.306800121125626], [-77.70632361937349, 43.30680215129837], [-77.70632027573828, 43.30680406354323], [-77.70631680809352, 43.30680585325344], [-77.70631322479304, 43.30680751611741], [-77.70630953446934, 43.306809048129175], [-77.70630574601273, 43.306810445597975], [-77.70630186854996, 43.306811705157195], [-77.70629791142215, 43.30681282377243], [-77.70629388416236, 43.30681379874886], [-77.70628979647265, 43.30681462773766], [-77.70628565820057, 43.30681530874174], [-77.70628147931563, 43.30681584012048], [-77.7062772698851, 43.30681622059377], [-77.70627304004988, 43.306816449245], [-77.7062688, 43.30681652552333], [-77.70626455995013, 43.306816449245], [-77.70626033011492, 43.30681622059377], [-77.70625612068439, 43.30681584012048], [-77.70625194179944, 43.30681530874174], [-77.70624780352738, 43.30681462773766], [-77.70624371583764, 43.30681379874886], [-77.70623968857787, 43.30681282377243], [-77.70623573145005, 43.306811705157195], [-77.70623185398728, 43.306810445597975], [-77.70622806553068, 43.306809048129175], [-77.70622437520699, 43.30680751611741], [-77.7062207919065, 43.30680585325344], [-77.70621732426174, 43.30680406354323], [-77.70621398062653, 43.30680215129837], [-77.70621076905599, 43.306800121125626], [-77.70620769728707, 43.30679797791584], [-77.70620477271994, 43.30679572683221], [-77.70620200240015, 43.306793373297786], [-77.70619939300163, 43.30679092298245], [-77.70619695081062, 43.30678838178922], [-77.70619468171063, 43.30678575584004], [-77.70619259116808, 43.30678305146107], [-77.70619068421928, 43.306780275167384], [-77.70618896545822, 43.306777433647326], [-77.7061874390256, 43.30677453374636], [-77.70618610859867, 43.3067715824506], [-77.70618497738258, 43.306768586869985], [-77.7061840481025, 43.306765554221116], [-77.70618332299719, 43.306762491809934], [-77.70618280381345, 43.30675940701403], [-77.70618249180205, 43.30675630726496], [-77.70618238771468, 43.30675320003029], [-77.70618249180205, 43.306750092795625]]], "type": "Polygon"}, "properties": {"center": {"latitude": 43.3067532000303, "longitude": -77.70626880000002}, "detections": 2, "detections_by_class": {"water_tank": 2}, "feature_type": "risk_zone", "images": ["DJI_0020.jpeg"], "images_count": 1, "risk_label": "Baixo", "risk_level": "LOW", "risk_score": 1.3061, "zone_margin_m": 7.0}, "type": "Feature"}], "type": "FeatureCollection"});
+
+        
+    
+            geo_json_dfebb54276a24cdaa5075e86b29bc00f.bindTooltip(
+                `<div>
+                     Área Baixo — 2 detecções
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+        var popup_dd13bab073eaccbf9a0fa84ca480fec8 = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_5810533faeca0575e8dcf17182ffc922 = $(`<div id="html_5810533faeca0575e8dcf17182ffc922" style="width: 100.0%; height: 100.0%;">     <div style="width:320px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">             Área de risco — Baixo         </h4>          <div style="             padding:8px;             background:#f5f5f5;             border-radius:6px;             margin-bottom:8px;         ">             <b>Score da zona:</b> 1.3061<br>             <b>Imagens:</b> 1<br>             <b>Detecções:</b> 2         </div>          <b>Classes detectadas</b>         <ul style='margin:5px 0;padding-left:18px;'><li>water_tank: 2</li></ul>          <b>Imagens da zona</b>         <div style="margin-top:4px;font-size:11px;">             DJI_0020.jpeg         </div>          <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             Hotspot de priorização do MVP.         </div>     </div>     </div>`)[0];
+                popup_dd13bab073eaccbf9a0fa84ca480fec8.setContent(html_5810533faeca0575e8dcf17182ffc922);
+            
+        
+
+        geo_json_dfebb54276a24cdaa5075e86b29bc00f.bindPopup(popup_dd13bab073eaccbf9a0fa84ca480fec8)
+        ;
+
+        
+    
+    
+            geo_json_dfebb54276a24cdaa5075e86b29bc00f.addTo(feature_group_0fdfc329fea11ed05e344ca5e5b3d671);
+        
+    
+            feature_group_0fdfc329fea11ed05e344ca5e5b3d671.addTo(map_584d0bf6b42288de02456ccfe34a443d);
+        
+    
+            var feature_group_cb73a9daa3843a62c429ac8cfb358af4 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_a805121d50ae44d6d68ed8e20dc1279b = L.circleMarker(
+                [43.306473, -77.706539],
+                {"bubblingMouseEvents": true, "color": "#212121", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F9A825", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(feature_group_cb73a9daa3843a62c429ac8cfb358af4);
+        
+    
+        var popup_5230f338d18320960eba23e315cbf69a = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_8ef164dab2d1b4db92cae1e688eb3476 = $(`<div id="html_8ef164dab2d1b4db92cae1e688eb3476" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0004.jpg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Baixo<br>             <b>Score:</b> 2.3325         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3064730<br>             Longitude: -77.7065390<br>             Altitude: 86.23 m         </div>          <b>Detecções</b>                  <table style="width:100%;border-collapse:collapse;font-size:12px;">             <thead>                 <tr>                     <th style="text-align:left;border-bottom:1px solid #ddd;">                         Classe                     </th>                     <th style="text-align:right;border-bottom:1px solid #ddd;">                         Qtd.                     </th>                 </tr>             </thead>             <tbody>             <tr>                 <td style="padding:3px 0;">other_containers</td>                 <td style="padding:3px 0;text-align:right;">4</td>             </tr>             </tbody>         </table>                   <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_5230f338d18320960eba23e315cbf69a.setContent(html_8ef164dab2d1b4db92cae1e688eb3476);
+            
+        
+
+        circle_marker_a805121d50ae44d6d68ed8e20dc1279b.bindPopup(popup_5230f338d18320960eba23e315cbf69a)
+        ;
+
+        
+    
+    
+            circle_marker_a805121d50ae44d6d68ed8e20dc1279b.bindTooltip(
+                `<div>
+                     DJI_0004.jpg — Baixo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e1bd4471b50163b79b98d9c866752fb6 = L.circleMarker(
+                [43.30647449994763, -77.70653329999166],
+                {"bubblingMouseEvents": true, "color": "#212121", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F9A825", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(feature_group_cb73a9daa3843a62c429ac8cfb358af4);
+        
+    
+        var popup_ff3d61105fb3280e7d384a618deffdbb = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_a3191aee8f0e99eb0d553badb265bb7b = $(`<div id="html_a3191aee8f0e99eb0d553badb265bb7b" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0006.jpg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Baixo<br>             <b>Score:</b> 1.3076         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3064745<br>             Longitude: -77.7065333<br>             Altitude: 97.79 m         </div>          <b>Detecções</b>                  <table style="width:100%;border-collapse:collapse;font-size:12px;">             <thead>                 <tr>                     <th style="text-align:left;border-bottom:1px solid #ddd;">                         Classe                     </th>                     <th style="text-align:right;border-bottom:1px solid #ddd;">                         Qtd.                     </th>                 </tr>             </thead>             <tbody>             <tr>                 <td style="padding:3px 0;">tire</td>                 <td style="padding:3px 0;text-align:right;">1</td>             </tr>                          <tr>                 <td style="padding:3px 0;">water_tank</td>                 <td style="padding:3px 0;text-align:right;">1</td>             </tr>             </tbody>         </table>                   <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_ff3d61105fb3280e7d384a618deffdbb.setContent(html_a3191aee8f0e99eb0d553badb265bb7b);
+            
+        
+
+        circle_marker_e1bd4471b50163b79b98d9c866752fb6.bindPopup(popup_ff3d61105fb3280e7d384a618deffdbb)
+        ;
+
+        
+    
+    
+            circle_marker_e1bd4471b50163b79b98d9c866752fb6.bindTooltip(
+                `<div>
+                     DJI_0006.jpg — Baixo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_9e861c9035859ac57e27ee11b28d75fc = L.circleMarker(
+                [43.306472799999995, -77.7065383000018],
+                {"bubblingMouseEvents": true, "color": "#212121", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F9A825", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(feature_group_cb73a9daa3843a62c429ac8cfb358af4);
+        
+    
+        var popup_68afa0e59b8605ad23a9861df5a0de85 = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_8e3be15ca9b4ff397a5bf4b240970375 = $(`<div id="html_8e3be15ca9b4ff397a5bf4b240970375" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0009.jpg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Baixo<br>             <b>Score:</b> 1.6844         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3064728<br>             Longitude: -77.7065383<br>             Altitude: 113.84 m         </div>          <b>Detecções</b>                  <table style="width:100%;border-collapse:collapse;font-size:12px;">             <thead>                 <tr>                     <th style="text-align:left;border-bottom:1px solid #ddd;">                         Classe                     </th>                     <th style="text-align:right;border-bottom:1px solid #ddd;">                         Qtd.                     </th>                 </tr>             </thead>             <tbody>             <tr>                 <td style="padding:3px 0;">drum</td>                 <td style="padding:3px 0;text-align:right;">1</td>             </tr>                          <tr>                 <td style="padding:3px 0;">other_containers</td>                 <td style="padding:3px 0;text-align:right;">2</td>             </tr>             </tbody>         </table>                   <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_68afa0e59b8605ad23a9861df5a0de85.setContent(html_8e3be15ca9b4ff397a5bf4b240970375);
+            
+        
+
+        circle_marker_9e861c9035859ac57e27ee11b28d75fc.bindPopup(popup_68afa0e59b8605ad23a9861df5a0de85)
+        ;
+
+        
+    
+    
+            circle_marker_9e861c9035859ac57e27ee11b28d75fc.bindTooltip(
+                `<div>
+                     DJI_0009.jpg — Baixo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_d906463019ebafc0de1b799c964b6c2d = L.circleMarker(
+                [43.30647330000362, -77.70653800000001],
+                {"bubblingMouseEvents": true, "color": "#212121", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F9A825", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(feature_group_cb73a9daa3843a62c429ac8cfb358af4);
+        
+    
+        var popup_520ab27c597aec7d5de20d8df4c13733 = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_747dd44e22056389f4bebfde53e30e05 = $(`<div id="html_747dd44e22056389f4bebfde53e30e05" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0011.jpg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Baixo<br>             <b>Score:</b> 1.5674         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3064733<br>             Longitude: -77.7065380<br>             Altitude: 125.44 m         </div>          <b>Detecções</b>                  <table style="width:100%;border-collapse:collapse;font-size:12px;">             <thead>                 <tr>                     <th style="text-align:left;border-bottom:1px solid #ddd;">                         Classe                     </th>                     <th style="text-align:right;border-bottom:1px solid #ddd;">                         Qtd.                     </th>                 </tr>             </thead>             <tbody>             <tr>                 <td style="padding:3px 0;">water_tank</td>                 <td style="padding:3px 0;text-align:right;">2</td>             </tr>             </tbody>         </table>                   <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_520ab27c597aec7d5de20d8df4c13733.setContent(html_747dd44e22056389f4bebfde53e30e05);
+            
+        
+
+        circle_marker_d906463019ebafc0de1b799c964b6c2d.bindPopup(popup_520ab27c597aec7d5de20d8df4c13733)
+        ;
+
+        
+    
+    
+            circle_marker_d906463019ebafc0de1b799c964b6c2d.bindTooltip(
+                `<div>
+                     DJI_0011.jpg — Baixo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_027b7c353ba19b3322f5a5b385e5437e = L.circleMarker(
+                [43.30647330000362, -77.70653739997975],
+                {"bubblingMouseEvents": true, "color": "#212121", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2E7D32", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(feature_group_cb73a9daa3843a62c429ac8cfb358af4);
+        
+    
+        var popup_edb2a1cf683ae618fff4fb4ff84e6600 = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_86012023fe5e4ad3161e8adffc903637 = $(`<div id="html_86012023fe5e4ad3161e8adffc903637" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0012.jpg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Muito baixo<br>             <b>Score:</b> 0.6254         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3064733<br>             Longitude: -77.7065374<br>             Altitude: 131.01 m         </div>          <b>Detecções</b>                  <table style="width:100%;border-collapse:collapse;font-size:12px;">             <thead>                 <tr>                     <th style="text-align:left;border-bottom:1px solid #ddd;">                         Classe                     </th>                     <th style="text-align:right;border-bottom:1px solid #ddd;">                         Qtd.                     </th>                 </tr>             </thead>             <tbody>             <tr>                 <td style="padding:3px 0;">drum</td>                 <td style="padding:3px 0;text-align:right;">1</td>             </tr>             </tbody>         </table>                   <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_edb2a1cf683ae618fff4fb4ff84e6600.setContent(html_86012023fe5e4ad3161e8adffc903637);
+            
+        
+
+        circle_marker_027b7c353ba19b3322f5a5b385e5437e.bindPopup(popup_edb2a1cf683ae618fff4fb4ff84e6600)
+        ;
+
+        
+    
+    
+            circle_marker_027b7c353ba19b3322f5a5b385e5437e.bindTooltip(
+                `<div>
+                     DJI_0012.jpg — Muito baixo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5f9e9f1ecfa60697466e77f3dfbc321e = L.circleMarker(
+                [43.3064724, -77.70653760005875],
+                {"bubblingMouseEvents": true, "color": "#212121", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2E7D32", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(feature_group_cb73a9daa3843a62c429ac8cfb358af4);
+        
+    
+        var popup_966d6649fad8c86280eacddc319fb26f = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_e7124c694d60d62266609316082ddf65 = $(`<div id="html_e7124c694d60d62266609316082ddf65" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0013.jpeg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Muito baixo<br>             <b>Score:</b> 0.6734         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3064724<br>             Longitude: -77.7065376<br>             Altitude: 136.52 m         </div>          <b>Detecções</b>                  <table style="width:100%;border-collapse:collapse;font-size:12px;">             <thead>                 <tr>                     <th style="text-align:left;border-bottom:1px solid #ddd;">                         Classe                     </th>                     <th style="text-align:right;border-bottom:1px solid #ddd;">                         Qtd.                     </th>                 </tr>             </thead>             <tbody>             <tr>                 <td style="padding:3px 0;">water_tank</td>                 <td style="padding:3px 0;text-align:right;">1</td>             </tr>             </tbody>         </table>                   <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_966d6649fad8c86280eacddc319fb26f.setContent(html_e7124c694d60d62266609316082ddf65);
+            
+        
+
+        circle_marker_5f9e9f1ecfa60697466e77f3dfbc321e.bindPopup(popup_966d6649fad8c86280eacddc319fb26f)
+        ;
+
+        
+    
+    
+            circle_marker_5f9e9f1ecfa60697466e77f3dfbc321e.bindTooltip(
+                `<div>
+                     DJI_0013.jpeg — Muito baixo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_ddc863bdaefcb2a96e111838f0277a96 = L.circleMarker(
+                [43.306473, -77.70653719998738],
+                {"bubblingMouseEvents": true, "color": "#212121", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2E7D32", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(feature_group_cb73a9daa3843a62c429ac8cfb358af4);
+        
+    
+        var popup_cec0ba216e263ae8fec16803662bb90f = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_67f42c4f48ab9d515ad4b7e102e5fa0b = $(`<div id="html_67f42c4f48ab9d515ad4b7e102e5fa0b" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0014.jpeg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Muito baixo<br>             <b>Score:</b> 0.6254         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3064730<br>             Longitude: -77.7065372<br>             Altitude: 142.37 m         </div>          <b>Detecções</b>                  <table style="width:100%;border-collapse:collapse;font-size:12px;">             <thead>                 <tr>                     <th style="text-align:left;border-bottom:1px solid #ddd;">                         Classe                     </th>                     <th style="text-align:right;border-bottom:1px solid #ddd;">                         Qtd.                     </th>                 </tr>             </thead>             <tbody>             <tr>                 <td style="padding:3px 0;">drum</td>                 <td style="padding:3px 0;text-align:right;">1</td>             </tr>             </tbody>         </table>                   <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_cec0ba216e263ae8fec16803662bb90f.setContent(html_67f42c4f48ab9d515ad4b7e102e5fa0b);
+            
+        
+
+        circle_marker_ddc863bdaefcb2a96e111838f0277a96.bindPopup(popup_cec0ba216e263ae8fec16803662bb90f)
+        ;
+
+        
+    
+    
+            circle_marker_ddc863bdaefcb2a96e111838f0277a96.bindTooltip(
+                `<div>
+                     DJI_0014.jpeg — Muito baixo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_76b7e6b5c3ec2ad9083350317de25575 = L.circleMarker(
+                [43.30648520005949, -77.7065275999431],
+                {"bubblingMouseEvents": true, "color": "#212121", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2E7D32", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(feature_group_cb73a9daa3843a62c429ac8cfb358af4);
+        
+    
+        var popup_5aa7831ba9eaf313664eafab20d981fc = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_0ad0a54cc6531863b11521f2fcc72ca2 = $(`<div id="html_0ad0a54cc6531863b11521f2fcc72ca2" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0017.jpeg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Muito baixo<br>             <b>Score:</b> 0.7580         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3064852<br>             Longitude: -77.7065276<br>             Altitude: 156.85 m         </div>          <b>Detecções</b>                  <table style="width:100%;border-collapse:collapse;font-size:12px;">             <thead>                 <tr>                     <th style="text-align:left;border-bottom:1px solid #ddd;">                         Classe                     </th>                     <th style="text-align:right;border-bottom:1px solid #ddd;">                         Qtd.                     </th>                 </tr>             </thead>             <tbody>             <tr>                 <td style="padding:3px 0;">water_tank</td>                 <td style="padding:3px 0;text-align:right;">1</td>             </tr>             </tbody>         </table>                   <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_5aa7831ba9eaf313664eafab20d981fc.setContent(html_0ad0a54cc6531863b11521f2fcc72ca2);
+            
+        
+
+        circle_marker_76b7e6b5c3ec2ad9083350317de25575.bindPopup(popup_5aa7831ba9eaf313664eafab20d981fc)
+        ;
+
+        
+    
+    
+            circle_marker_76b7e6b5c3ec2ad9083350317de25575.bindTooltip(
+                `<div>
+                     DJI_0017.jpeg — Muito baixo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_0667ddcb37e6201bdf6ab17c6958d214 = L.circleMarker(
+                [43.30665479996125, -77.70636540000696],
+                {"bubblingMouseEvents": true, "color": "#212121", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2E7D32", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(feature_group_cb73a9daa3843a62c429ac8cfb358af4);
+        
+    
+        var popup_7e84d5b44625f85eb09ed4ca6878cd3b = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_bb440399af8b4f6d92d7ed7a98f67d2c = $(`<div id="html_bb440399af8b4f6d92d7ed7a98f67d2c" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0019.jpeg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Muito baixo<br>             <b>Score:</b> 0.6629         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3066548<br>             Longitude: -77.7063654<br>             Altitude: 157.62 m         </div>          <b>Detecções</b>                  <table style="width:100%;border-collapse:collapse;font-size:12px;">             <thead>                 <tr>                     <th style="text-align:left;border-bottom:1px solid #ddd;">                         Classe                     </th>                     <th style="text-align:right;border-bottom:1px solid #ddd;">                         Qtd.                     </th>                 </tr>             </thead>             <tbody>             <tr>                 <td style="padding:3px 0;">water_tank</td>                 <td style="padding:3px 0;text-align:right;">1</td>             </tr>             </tbody>         </table>                   <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_7e84d5b44625f85eb09ed4ca6878cd3b.setContent(html_bb440399af8b4f6d92d7ed7a98f67d2c);
+            
+        
+
+        circle_marker_0667ddcb37e6201bdf6ab17c6958d214.bindPopup(popup_7e84d5b44625f85eb09ed4ca6878cd3b)
+        ;
+
+        
+    
+    
+            circle_marker_0667ddcb37e6201bdf6ab17c6958d214.bindTooltip(
+                `<div>
+                     DJI_0019.jpeg — Muito baixo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1c6ca232e6ac36f954324d687a6ae313 = L.circleMarker(
+                [43.30675320003029, -77.7062688],
+                {"bubblingMouseEvents": true, "color": "#212121", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#F9A825", "fillOpacity": 1, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(feature_group_cb73a9daa3843a62c429ac8cfb358af4);
+        
+    
+        var popup_2b8f9e8b4b9efefec5983b809952e645 = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_67eb39c9d7f98639ada42e5b70fdccdd = $(`<div id="html_67eb39c9d7f98639ada42e5b70fdccdd" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0020.jpeg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Baixo<br>             <b>Score:</b> 1.3061         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3067532<br>             Longitude: -77.7062688<br>             Altitude: 157.68 m         </div>          <b>Detecções</b>                  <table style="width:100%;border-collapse:collapse;font-size:12px;">             <thead>                 <tr>                     <th style="text-align:left;border-bottom:1px solid #ddd;">                         Classe                     </th>                     <th style="text-align:right;border-bottom:1px solid #ddd;">                         Qtd.                     </th>                 </tr>             </thead>             <tbody>             <tr>                 <td style="padding:3px 0;">water_tank</td>                 <td style="padding:3px 0;text-align:right;">2</td>             </tr>             </tbody>         </table>                   <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_2b8f9e8b4b9efefec5983b809952e645.setContent(html_67eb39c9d7f98639ada42e5b70fdccdd);
+            
+        
+
+        circle_marker_1c6ca232e6ac36f954324d687a6ae313.bindPopup(popup_2b8f9e8b4b9efefec5983b809952e645)
+        ;
+
+        
+    
+    
+            circle_marker_1c6ca232e6ac36f954324d687a6ae313.bindTooltip(
+                `<div>
+                     DJI_0020.jpeg — Baixo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            feature_group_cb73a9daa3843a62c429ac8cfb358af4.addTo(map_584d0bf6b42288de02456ccfe34a443d);
+        
+    
+            var feature_group_325413eb7ad5e8b36bf9db4c7ba3b48d = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_1755a857285e8cec59ed5cccefbdf176 = L.circleMarker(
+                [43.306473999999994, -77.70654020003848],
+                {"bubblingMouseEvents": true, "color": "#616161", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#BDBDBD", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3, "stroke": true, "weight": 1}
+            ).addTo(feature_group_325413eb7ad5e8b36bf9db4c7ba3b48d);
+        
+    
+        var popup_d75af2c12b4498a9eea2613acc71ac02 = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_b6fb7fc673fa74a8b61608cf7d5f94a6 = $(`<div id="html_b6fb7fc673fa74a8b61608cf7d5f94a6" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0001.jpg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Muito baixo<br>             <b>Score:</b> 0.0000         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3064740<br>             Longitude: -77.7065402<br>             Altitude: 77.63 m         </div>          <b>Detecções</b>         <p style='margin:4px 0;'>Nenhuma detecção.</p>          <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_d75af2c12b4498a9eea2613acc71ac02.setContent(html_b6fb7fc673fa74a8b61608cf7d5f94a6);
+            
+        
+
+        circle_marker_1755a857285e8cec59ed5cccefbdf176.bindPopup(popup_d75af2c12b4498a9eea2613acc71ac02)
+        ;
+
+        
+    
+    
+            circle_marker_1755a857285e8cec59ed5cccefbdf176.bindTooltip(
+                `<div>
+                     DJI_0001.jpg — Sem detecção
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_2a95405006f50866f4fbc9034fe01e78 = L.circleMarker(
+                [43.30647359994042, -77.70653929995018],
+                {"bubblingMouseEvents": true, "color": "#616161", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#BDBDBD", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3, "stroke": true, "weight": 1}
+            ).addTo(feature_group_325413eb7ad5e8b36bf9db4c7ba3b48d);
+        
+    
+        var popup_5b691d66cd0c050c53dee3ef75094e88 = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_625fec96c74227c1732f9ee93eb9ed5c = $(`<div id="html_625fec96c74227c1732f9ee93eb9ed5c" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0002.jpg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Muito baixo<br>             <b>Score:</b> 0.0000         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3064736<br>             Longitude: -77.7065393<br>             Altitude: 77.65 m         </div>          <b>Detecções</b>         <p style='margin:4px 0;'>Nenhuma detecção.</p>          <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_5b691d66cd0c050c53dee3ef75094e88.setContent(html_625fec96c74227c1732f9ee93eb9ed5c);
+            
+        
+
+        circle_marker_2a95405006f50866f4fbc9034fe01e78.bindPopup(popup_5b691d66cd0c050c53dee3ef75094e88)
+        ;
+
+        
+    
+    
+            circle_marker_2a95405006f50866f4fbc9034fe01e78.bindTooltip(
+                `<div>
+                     DJI_0002.jpg — Sem detecção
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3ca3174bb9535997dd31ef534f64f71b = L.circleMarker(
+                [43.30647620000667, -77.70653769999822],
+                {"bubblingMouseEvents": true, "color": "#616161", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#BDBDBD", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3, "stroke": true, "weight": 1}
+            ).addTo(feature_group_325413eb7ad5e8b36bf9db4c7ba3b48d);
+        
+    
+        var popup_8e68b533cdca9a3ca72f7725dfc92fd3 = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_733e133e1bca50ce4243f30893c49864 = $(`<div id="html_733e133e1bca50ce4243f30893c49864" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0003.jpg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Muito baixo<br>             <b>Score:</b> 0.0000         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3064762<br>             Longitude: -77.7065377<br>             Altitude: 80.09 m         </div>          <b>Detecções</b>         <p style='margin:4px 0;'>Nenhuma detecção.</p>          <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_8e68b533cdca9a3ca72f7725dfc92fd3.setContent(html_733e133e1bca50ce4243f30893c49864);
+            
+        
+
+        circle_marker_3ca3174bb9535997dd31ef534f64f71b.bindPopup(popup_8e68b533cdca9a3ca72f7725dfc92fd3)
+        ;
+
+        
+    
+    
+            circle_marker_3ca3174bb9535997dd31ef534f64f71b.bindTooltip(
+                `<div>
+                     DJI_0003.jpg — Sem detecção
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_55c17dd051471e90550c3e9e0e909749 = L.circleMarker(
+                [43.306472799999995, -77.70653810003357],
+                {"bubblingMouseEvents": true, "color": "#616161", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#BDBDBD", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3, "stroke": true, "weight": 1}
+            ).addTo(feature_group_325413eb7ad5e8b36bf9db4c7ba3b48d);
+        
+    
+        var popup_ca861577b9a64ccf4e7a9e8895b687ca = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_258afd788eb854567d185dec36619a63 = $(`<div id="html_258afd788eb854567d185dec36619a63" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0005.jpg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Muito baixo<br>             <b>Score:</b> 0.0000         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3064728<br>             Longitude: -77.7065381<br>             Altitude: 92.08 m         </div>          <b>Detecções</b>         <p style='margin:4px 0;'>Nenhuma detecção.</p>          <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_ca861577b9a64ccf4e7a9e8895b687ca.setContent(html_258afd788eb854567d185dec36619a63);
+            
+        
+
+        circle_marker_55c17dd051471e90550c3e9e0e909749.bindPopup(popup_ca861577b9a64ccf4e7a9e8895b687ca)
+        ;
+
+        
+    
+    
+            circle_marker_55c17dd051471e90550c3e9e0e909749.bindTooltip(
+                `<div>
+                     DJI_0005.jpg — Sem detecção
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_300d2acbf7ee1c8399f911e86f1325e7 = L.circleMarker(
+                [43.306474200023615, -77.70653689998973],
+                {"bubblingMouseEvents": true, "color": "#616161", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#BDBDBD", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3, "stroke": true, "weight": 1}
+            ).addTo(feature_group_325413eb7ad5e8b36bf9db4c7ba3b48d);
+        
+    
+        var popup_9a15b210f509c3093266bcc39685cc4e = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_ea482229c8de2f19c4596e7e12633a5e = $(`<div id="html_ea482229c8de2f19c4596e7e12633a5e" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0007.jpg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Muito baixo<br>             <b>Score:</b> 0.0000         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3064742<br>             Longitude: -77.7065369<br>             Altitude: 103.01 m         </div>          <b>Detecções</b>         <p style='margin:4px 0;'>Nenhuma detecção.</p>          <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_9a15b210f509c3093266bcc39685cc4e.setContent(html_ea482229c8de2f19c4596e7e12633a5e);
+            
+        
+
+        circle_marker_300d2acbf7ee1c8399f911e86f1325e7.bindPopup(popup_9a15b210f509c3093266bcc39685cc4e)
+        ;
+
+        
+    
+    
+            circle_marker_300d2acbf7ee1c8399f911e86f1325e7.bindTooltip(
+                `<div>
+                     DJI_0007.jpg — Sem detecção
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_740e4bf8d65eed7791ab2255e284a1cf = L.circleMarker(
+                [43.30647340000551, -77.70653789999699],
+                {"bubblingMouseEvents": true, "color": "#616161", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#BDBDBD", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3, "stroke": true, "weight": 1}
+            ).addTo(feature_group_325413eb7ad5e8b36bf9db4c7ba3b48d);
+        
+    
+        var popup_a0bcc187264f96e21ec9057eacf7609e = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_093589562be2aca55bd1f6480ff3b2f6 = $(`<div id="html_093589562be2aca55bd1f6480ff3b2f6" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0008.jpg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Muito baixo<br>             <b>Score:</b> 0.0000         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3064734<br>             Longitude: -77.7065379<br>             Altitude: 108.23 m         </div>          <b>Detecções</b>         <p style='margin:4px 0;'>Nenhuma detecção.</p>          <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_a0bcc187264f96e21ec9057eacf7609e.setContent(html_093589562be2aca55bd1f6480ff3b2f6);
+            
+        
+
+        circle_marker_740e4bf8d65eed7791ab2255e284a1cf.bindPopup(popup_a0bcc187264f96e21ec9057eacf7609e)
+        ;
+
+        
+    
+    
+            circle_marker_740e4bf8d65eed7791ab2255e284a1cf.bindTooltip(
+                `<div>
+                     DJI_0008.jpg — Sem detecção
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3cacaa1a789833f5bc1893d1bdc2f970 = L.circleMarker(
+                [43.30647330000362, -77.70653850000001],
+                {"bubblingMouseEvents": true, "color": "#616161", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#BDBDBD", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3, "stroke": true, "weight": 1}
+            ).addTo(feature_group_325413eb7ad5e8b36bf9db4c7ba3b48d);
+        
+    
+        var popup_7db7af0359e71b15f4f91b6315423896 = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_9036d908f727be2b164971ea8e5c07b1 = $(`<div id="html_9036d908f727be2b164971ea8e5c07b1" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0010.jpg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Muito baixo<br>             <b>Score:</b> 0.0000         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3064733<br>             Longitude: -77.7065385<br>             Altitude: 119.88 m         </div>          <b>Detecções</b>         <p style='margin:4px 0;'>Nenhuma detecção.</p>          <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_7db7af0359e71b15f4f91b6315423896.setContent(html_9036d908f727be2b164971ea8e5c07b1);
+            
+        
+
+        circle_marker_3cacaa1a789833f5bc1893d1bdc2f970.bindPopup(popup_7db7af0359e71b15f4f91b6315423896)
+        ;
+
+        
+    
+    
+            circle_marker_3cacaa1a789833f5bc1893d1bdc2f970.bindTooltip(
+                `<div>
+                     DJI_0010.jpg — Sem detecção
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_c9393789171a342d963da772d10d0bac = L.circleMarker(
+                [43.30647340000551, -77.70653850000001],
+                {"bubblingMouseEvents": true, "color": "#616161", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#BDBDBD", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3, "stroke": true, "weight": 1}
+            ).addTo(feature_group_325413eb7ad5e8b36bf9db4c7ba3b48d);
+        
+    
+        var popup_3b6d29de0cefdbbe1495a681e4b46e42 = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_9e353a501f82452b4d7e9e18c662e438 = $(`<div id="html_9e353a501f82452b4d7e9e18c662e438" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0015.jpeg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Muito baixo<br>             <b>Score:</b> 0.0000         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3064734<br>             Longitude: -77.7065385<br>             Altitude: 148.04 m         </div>          <b>Detecções</b>         <p style='margin:4px 0;'>Nenhuma detecção.</p>          <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_3b6d29de0cefdbbe1495a681e4b46e42.setContent(html_9e353a501f82452b4d7e9e18c662e438);
+            
+        
+
+        circle_marker_c9393789171a342d963da772d10d0bac.bindPopup(popup_3b6d29de0cefdbbe1495a681e4b46e42)
+        ;
+
+        
+    
+    
+            circle_marker_c9393789171a342d963da772d10d0bac.bindTooltip(
+                `<div>
+                     DJI_0015.jpeg — Sem detecção
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_b517051c132ee352ddea47d50ac0efec = L.circleMarker(
+                [43.30647340000551, -77.706539],
+                {"bubblingMouseEvents": true, "color": "#616161", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#BDBDBD", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3, "stroke": true, "weight": 1}
+            ).addTo(feature_group_325413eb7ad5e8b36bf9db4c7ba3b48d);
+        
+    
+        var popup_ca1a6ec7b5a1f2d483a346ca2542b64e = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_ecb275f941d69535390245a21996af31 = $(`<div id="html_ecb275f941d69535390245a21996af31" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0016.jpeg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Muito baixo<br>             <b>Score:</b> 0.0000         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3064734<br>             Longitude: -77.7065390<br>             Altitude: 152.56 m         </div>          <b>Detecções</b>         <p style='margin:4px 0;'>Nenhuma detecção.</p>          <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_ca1a6ec7b5a1f2d483a346ca2542b64e.setContent(html_ecb275f941d69535390245a21996af31);
+            
+        
+
+        circle_marker_b517051c132ee352ddea47d50ac0efec.bindPopup(popup_ca1a6ec7b5a1f2d483a346ca2542b64e)
+        ;
+
+        
+    
+    
+            circle_marker_b517051c132ee352ddea47d50ac0efec.bindTooltip(
+                `<div>
+                     DJI_0016.jpeg — Sem detecção
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_e76c628284962f9a52148697d75e65b5 = L.circleMarker(
+                [43.30655629998961, -77.70645830002665],
+                {"bubblingMouseEvents": true, "color": "#616161", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#BDBDBD", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 3, "stroke": true, "weight": 1}
+            ).addTo(feature_group_325413eb7ad5e8b36bf9db4c7ba3b48d);
+        
+    
+        var popup_fc060f445393d5c27e22703a44f486fe = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_1e237f4421da4576140c91f1bc37c044 = $(`<div id="html_1e237f4421da4576140c91f1bc37c044" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0018.jpeg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Muito baixo<br>             <b>Score:</b> 0.0000         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3065563<br>             Longitude: -77.7064583<br>             Altitude: 157.47 m         </div>          <b>Detecções</b>         <p style='margin:4px 0;'>Nenhuma detecção.</p>          <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_fc060f445393d5c27e22703a44f486fe.setContent(html_1e237f4421da4576140c91f1bc37c044);
+            
+        
+
+        circle_marker_e76c628284962f9a52148697d75e65b5.bindPopup(popup_fc060f445393d5c27e22703a44f486fe)
+        ;
+
+        
+    
+    
+            circle_marker_e76c628284962f9a52148697d75e65b5.bindTooltip(
+                `<div>
+                     DJI_0018.jpeg — Sem detecção
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var feature_group_b6595b891fe89a98bff4b1dd000766dc = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_b1d43d2e802f282d2564839789da6c3f = L.circleMarker(
+                [43.30647330000362, -77.70653739997975],
+                {"bubblingMouseEvents": true, "color": "#2E7D32", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2E7D32", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(feature_group_b6595b891fe89a98bff4b1dd000766dc);
+        
+    
+        var popup_a6bfa4d94f055357f739f7285faf2e11 = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_597298139b28e3aad79c6e06a59ca6e1 = $(`<div id="html_597298139b28e3aad79c6e06a59ca6e1" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0012.jpg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Muito baixo<br>             <b>Score:</b> 0.6254         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3064733<br>             Longitude: -77.7065374<br>             Altitude: 131.01 m         </div>          <b>Detecções</b>                  <table style="width:100%;border-collapse:collapse;font-size:12px;">             <thead>                 <tr>                     <th style="text-align:left;border-bottom:1px solid #ddd;">                         Classe                     </th>                     <th style="text-align:right;border-bottom:1px solid #ddd;">                         Qtd.                     </th>                 </tr>             </thead>             <tbody>             <tr>                 <td style="padding:3px 0;">drum</td>                 <td style="padding:3px 0;text-align:right;">1</td>             </tr>             </tbody>         </table>                   <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_a6bfa4d94f055357f739f7285faf2e11.setContent(html_597298139b28e3aad79c6e06a59ca6e1);
+            
+        
+
+        circle_marker_b1d43d2e802f282d2564839789da6c3f.bindPopup(popup_a6bfa4d94f055357f739f7285faf2e11)
+        ;
+
+        
+    
+    
+            circle_marker_b1d43d2e802f282d2564839789da6c3f.bindTooltip(
+                `<div>
+                     DJI_0012.jpg — Muito baixo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3d09819865fd048f87d9bc6dbb5161d7 = L.circleMarker(
+                [43.3064724, -77.70653760005875],
+                {"bubblingMouseEvents": true, "color": "#2E7D32", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2E7D32", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(feature_group_b6595b891fe89a98bff4b1dd000766dc);
+        
+    
+        var popup_2114c00618ca1d543264eba075351844 = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_fb20c1ef202b88480c2d268472f8261a = $(`<div id="html_fb20c1ef202b88480c2d268472f8261a" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0013.jpeg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Muito baixo<br>             <b>Score:</b> 0.6734         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3064724<br>             Longitude: -77.7065376<br>             Altitude: 136.52 m         </div>          <b>Detecções</b>                  <table style="width:100%;border-collapse:collapse;font-size:12px;">             <thead>                 <tr>                     <th style="text-align:left;border-bottom:1px solid #ddd;">                         Classe                     </th>                     <th style="text-align:right;border-bottom:1px solid #ddd;">                         Qtd.                     </th>                 </tr>             </thead>             <tbody>             <tr>                 <td style="padding:3px 0;">water_tank</td>                 <td style="padding:3px 0;text-align:right;">1</td>             </tr>             </tbody>         </table>                   <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_2114c00618ca1d543264eba075351844.setContent(html_fb20c1ef202b88480c2d268472f8261a);
+            
+        
+
+        circle_marker_3d09819865fd048f87d9bc6dbb5161d7.bindPopup(popup_2114c00618ca1d543264eba075351844)
+        ;
+
+        
+    
+    
+            circle_marker_3d09819865fd048f87d9bc6dbb5161d7.bindTooltip(
+                `<div>
+                     DJI_0013.jpeg — Muito baixo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_13c7030a8c7e6481b7bbda4e07b6279a = L.circleMarker(
+                [43.306473, -77.70653719998738],
+                {"bubblingMouseEvents": true, "color": "#2E7D32", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2E7D32", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(feature_group_b6595b891fe89a98bff4b1dd000766dc);
+        
+    
+        var popup_ecf21be18cb59a4fe5b0f59c72043b50 = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_f7caecfb17d9ebc426723ec1a78bb961 = $(`<div id="html_f7caecfb17d9ebc426723ec1a78bb961" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0014.jpeg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Muito baixo<br>             <b>Score:</b> 0.6254         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3064730<br>             Longitude: -77.7065372<br>             Altitude: 142.37 m         </div>          <b>Detecções</b>                  <table style="width:100%;border-collapse:collapse;font-size:12px;">             <thead>                 <tr>                     <th style="text-align:left;border-bottom:1px solid #ddd;">                         Classe                     </th>                     <th style="text-align:right;border-bottom:1px solid #ddd;">                         Qtd.                     </th>                 </tr>             </thead>             <tbody>             <tr>                 <td style="padding:3px 0;">drum</td>                 <td style="padding:3px 0;text-align:right;">1</td>             </tr>             </tbody>         </table>                   <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_ecf21be18cb59a4fe5b0f59c72043b50.setContent(html_f7caecfb17d9ebc426723ec1a78bb961);
+            
+        
+
+        circle_marker_13c7030a8c7e6481b7bbda4e07b6279a.bindPopup(popup_ecf21be18cb59a4fe5b0f59c72043b50)
+        ;
+
+        
+    
+    
+            circle_marker_13c7030a8c7e6481b7bbda4e07b6279a.bindTooltip(
+                `<div>
+                     DJI_0014.jpeg — Muito baixo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_4ec61dde4614f18dec0958604610c403 = L.circleMarker(
+                [43.30648520005949, -77.7065275999431],
+                {"bubblingMouseEvents": true, "color": "#2E7D32", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2E7D32", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(feature_group_b6595b891fe89a98bff4b1dd000766dc);
+        
+    
+        var popup_f2019a0838057e0951a1a4304a27adbe = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_119a22e3e33c4a9132c08a37d7585bba = $(`<div id="html_119a22e3e33c4a9132c08a37d7585bba" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0017.jpeg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Muito baixo<br>             <b>Score:</b> 0.7580         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3064852<br>             Longitude: -77.7065276<br>             Altitude: 156.85 m         </div>          <b>Detecções</b>                  <table style="width:100%;border-collapse:collapse;font-size:12px;">             <thead>                 <tr>                     <th style="text-align:left;border-bottom:1px solid #ddd;">                         Classe                     </th>                     <th style="text-align:right;border-bottom:1px solid #ddd;">                         Qtd.                     </th>                 </tr>             </thead>             <tbody>             <tr>                 <td style="padding:3px 0;">water_tank</td>                 <td style="padding:3px 0;text-align:right;">1</td>             </tr>             </tbody>         </table>                   <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_f2019a0838057e0951a1a4304a27adbe.setContent(html_119a22e3e33c4a9132c08a37d7585bba);
+            
+        
+
+        circle_marker_4ec61dde4614f18dec0958604610c403.bindPopup(popup_f2019a0838057e0951a1a4304a27adbe)
+        ;
+
+        
+    
+    
+            circle_marker_4ec61dde4614f18dec0958604610c403.bindTooltip(
+                `<div>
+                     DJI_0017.jpeg — Muito baixo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3e443fb2a56b5ecaaaa14a10c2eb0ff3 = L.circleMarker(
+                [43.30665479996125, -77.70636540000696],
+                {"bubblingMouseEvents": true, "color": "#2E7D32", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#2E7D32", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4, "stroke": true, "weight": 2}
+            ).addTo(feature_group_b6595b891fe89a98bff4b1dd000766dc);
+        
+    
+        var popup_58e106b3a48cff848d448582dff9c9fc = L.popup({
+  "maxWidth": 390,
+});
+
+        
+            
+                var html_566cf56813b4dc28210bbaa3597e24f4 = $(`<div id="html_566cf56813b4dc28210bbaa3597e24f4" style="width: 100.0%; height: 100.0%;">     <div style="width:315px;font-family:Arial,sans-serif;">         <h4 style="margin:0 0 8px 0;">DJI_0019.jpeg</h4>          <div style="             padding:8px;             border-radius:6px;             background:#f5f5f5;             margin-bottom:8px;         ">             <b>Risco:</b> Muito baixo<br>             <b>Score:</b> 0.6629         </div>          <b>Localização da imagem</b>         <div style="margin:4px 0 8px 0;">             Latitude: 43.3066548<br>             Longitude: -77.7063654<br>             Altitude: 157.62 m         </div>          <b>Detecções</b>                  <table style="width:100%;border-collapse:collapse;font-size:12px;">             <thead>                 <tr>                     <th style="text-align:left;border-bottom:1px solid #ddd;">                         Classe                     </th>                     <th style="text-align:right;border-bottom:1px solid #ddd;">                         Qtd.                     </th>                 </tr>             </thead>             <tbody>             <tr>                 <td style="padding:3px 0;">water_tank</td>                 <td style="padding:3px 0;text-align:right;">1</td>             </tr>             </tbody>         </table>                   <div style="             margin-top:8px;             padding-top:6px;             border-top:1px solid #ddd;             color:#666;             font-size:10px;         ">             A área representa um hotspot de priorização do MVP.             Não representa o footprint real da câmera.         </div>     </div>     </div>`)[0];
+                popup_58e106b3a48cff848d448582dff9c9fc.setContent(html_566cf56813b4dc28210bbaa3597e24f4);
+            
+        
+
+        circle_marker_3e443fb2a56b5ecaaaa14a10c2eb0ff3.bindPopup(popup_58e106b3a48cff848d448582dff9c9fc)
+        ;
+
+        
+    
+    
+            circle_marker_3e443fb2a56b5ecaaaa14a10c2eb0ff3.bindTooltip(
+                `<div>
+                     DJI_0019.jpeg — Muito baixo
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var layer_control_60b8f353986dc261ef24f58c5b6d0876_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_c48bc8df336c9c9ef08fbbc0661eb5b3,
+                },
+                overlays :  {
+                    "Percurso aproximado" : feature_group_cc9c667500e87c03f423aaeb3824ba13,
+                    "\u00c1reas de risco" : feature_group_0fdfc329fea11ed05e344ca5e5b3d671,
+                    "Fotos com detec\u00e7\u00e3o" : feature_group_cb73a9daa3843a62c429ac8cfb358af4,
+                    "Fotos sem detec\u00e7\u00e3o" : feature_group_325413eb7ad5e8b36bf9db4c7ba3b48d,
+                    "Detec\u00e7\u00f5es muito baixas" : feature_group_b6595b891fe89a98bff4b1dd000766dc,
+                },
+            };
+            let layer_control_60b8f353986dc261ef24f58c5b6d0876 = L.control.layers(
+                layer_control_60b8f353986dc261ef24f58c5b6d0876_layers.base_layers,
+                layer_control_60b8f353986dc261ef24f58c5b6d0876_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": false,
+  "autoZIndex": true,
+}
+            ).addTo(map_584d0bf6b42288de02456ccfe34a443d);
+
+        
+</script>
+</html>

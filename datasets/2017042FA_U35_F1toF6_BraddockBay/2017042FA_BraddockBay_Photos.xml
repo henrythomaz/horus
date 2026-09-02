@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+ <idinfo>
+  <citation>
+   <citeinfo>
+    <origin>U.S. Geological Survey</origin>
+    <pubdate>2018</pubdate>
+    <title>Geotagged low-altitude aerial imagery from unmanned aerial systems (UAS) flights over of the Lake Ontario shoreline in the vicinity of Braddock Bay, New York in July 2017</title>
+    <edition>1.0</edition>
+    <geoform>remote-sensing image</geoform>
+    <serinfo>
+     <sername>data release</sername>
+     <issue>DOI:10.5066/F74F1PX3</issue>
+    </serinfo>
+    <pubinfo>
+     <pubplace>Woods Hole Coastal and Marine Science Center, Woods Hole, MA</pubplace>
+     <publish>U.S. Geological Survey, Coastal and Marine Geology Program</publish>
+    </pubinfo>
+    <onlink>https://doi.org/10.5066/F74F1PX3</onlink>
+    <onlink>https://www.sciencebase.gov/catalog/item/5a5cb30ce4b06e28e9bcd24b</onlink>
+    <lworkcit>
+     <citeinfo>
+      <origin>Christopher R. Sherwood</origin>
+      <origin>Sandra M. Brosnahan</origin>
+      <origin>Seth D. Ackerman</origin>
+      <origin>Jonathan Borden</origin>
+      <origin>Ellyn T. Montgomery</origin>
+      <origin>Elizabeth A. Pendleton</origin>
+      <origin>Emily J. Sturdivant</origin>
+      <pubdate>2018</pubdate>
+      <title>Aerial imagery and photogrammetric products from unmanned aerial systems (UAS) flights over the Lake Ontario shoreline at Braddock Bay, New York, July 10 to 11, 2017</title>
+      <edition>1.0</edition>
+      <serinfo>
+       <sername>data release</sername>
+       <issue>DOI:10.5066/F74F1PX3</issue>
+      </serinfo>
+      <pubinfo>
+       <pubplace>Reston, VA</pubplace>
+       <publish>U.S. Geological Survey</publish>
+      </pubinfo>
+      <othercit>Suggested citation: Sherwood, C.R., Brosnahan, S.M., Ackerman, S.D., Borden, Jonathan, Montgomery, E.T., Pendleton, E.A., and Sturdivant, E.J., 2018, Aerial imagery and photogrammetric products from unmanned aerial systems (UAS) flights over the Lake Ontario shoreline at Braddock Bay, New York, July 10 to 11, 2017: U.S. Geological Survey data release, https://doi.org/10.5066/F74F1PX3.</othercit>
+      <onlink>https://doi.org/10.5066/F74F1PX3</onlink>
+      <onlink>https://www.sciencebase.gov/catalog/item/5a329336e4b08e6a89d88012</onlink>
+     </citeinfo>
+    </lworkcit>
+   </citeinfo>
+  </citation>
+  <descript>
+   <abstract>Low-altitude (80-100 meters above ground level) digital images were obtained from a camera mounted on a 3DR Solo quadcopter, a small unmanned aerial system (UAS), in three locations along the Lake Ontario shoreline in New York during July 2017. These data were collected to document and monitor effects of high lake levels, including shoreline erosion, inundation, and property damage in the vicinities of Braddock Bay, Sodus Bay, and Chimney Bluffs State Park, New York. This data release includes images tagged with locations determined from the UAS GPS; tables with updated estimates of camera positions and attitudes based on the photogrammetric reconstruction; tables listing locations of the base stations, ground control points, and transect points; geolocated, RGB-colored point clouds; orthomosaic images; and digital elevation models for each of the survey regions. Collection of these data was supported by the Federal Emergency Management Agency, the State of New York Departments of State and Environmental Conservation, and the USGS Coastal and Marine Geology Program and was conducted under USGS field activity number 2017-042-FA.</abstract>
+   <purpose>These images were collected along the Lake Ontario shoreline in the vicinity of Braddock Bay, NY for the purposes of documenting and monitoring lake level change impacts to the lake shoreline. These overlapping aerial images are used within photogrammetric processing software to create point clouds, regional orthomosaics, and digital elevation models.</purpose>
+   <supplinf>For more information about this field activity, see https://cmgds.marine.usgs.gov/fan_info.php?fan=2017-042-FA. Photogrammetric processing using ground control points produces estimates of camera location and attitude (roll, pitch, and yaw) with much higher accuracies. Tables containing position and attitude estimates derived from photogrammetric post-processing are available in this data release, and are considered to have better positional accuracy than the GPS information provided in the EXIF headers in the images in this dataset. These photographs are the source for the photogrammetric products are grouped according to flight number. Flights 4-7 were acquired on July 10 and are used in the Braddock West project. Flights 10-13 and 16-22 were acquired on July 11 and are used in the Braddock East project.</supplinf>
+  </descript>
+  <timeperd>
+   <timeinfo>
+    <rngdates>
+     <begdate>20170710</begdate>
+     <enddate>20170711</enddate>
+    </rngdates>
+   </timeinfo>
+   <current>ground condition</current>
+  </timeperd>
+  <status>
+   <progress>Complete</progress>
+   <update>Not planned</update>
+  </status>
+  <spdom>
+   <bounding>
+    <westbc>-77.713289</westbc>
+    <eastbc>-77.682145</eastbc>
+    <northbc>43.312040</northbc>
+    <southbc>43.296576</southbc>
+   </bounding>
+  </spdom>
+  <keywords>
+   <theme>
+    <themekt>None</themekt>
+    <themekey>U.S. Geological Survey</themekey>
+    <themekey>USGS</themekey>
+    <themekey>Coastal and Marine Geology Program</themekey>
+    <themekey>CMGP</themekey>
+    <themekey>Woods Hole Coastal and Marine Science Center</themekey>
+    <themekey>WHCMSC</themekey>
+    <themekey>State of New York Department of State</themekey>
+    <themekey>State of New York Department of Environmental Conservation</themekey>
+    <themekey>Federal Emergency Management Agency</themekey>
+    <themekey>shoreline</themekey>
+    <themekey>lake level</themekey>
+    <themekey>3DR Solo quadcopter</themekey>
+    <themekey>Ricoh GRII</themekey>
+    <themekey>shoreline photographs</themekey>
+    <themekey>photographs</themekey>
+    <themekey>photos</themekey>
+    <themekey>JPEG</themekey>
+    <themekey>low-altitude aerial imagery</themekey>
+    <themekey>aerial imagery</themekey>
+    <themekey>UAS</themekey>
+    <themekey>Unmanned aerial system</themekey>
+    <themekey>geotagged photos</themekey>
+    <themekey>lakeshore</themekey>
+    <themekey>field activity number 2017-042-FA</themekey>
+   </theme>
+   <theme>
+    <themekt>USGS Thesaurus</themekt>
+    <themekey>remote sensing</themekey>
+    <themekey>aerial photography</themekey>
+    <themekey>image collections</themekey>
+   </theme>
+   <theme>
+    <themekt>ISO 19115 Topic Category</themekt>
+    <themekey>geoscientificInformation</themekey>
+    <themekey>location</themekey>
+   </theme>
+   <place>
+    <placekt>None</placekt>
+    <placekey>USA</placekey>
+    <placekey>Great Lakes</placekey>
+    <placekey>New York</placekey>
+    <placekey>Lake Ontario</placekey>
+    <placekey>Braddock Bay Wildlife Management Area</placekey>
+    <placekey>Braddock Bay</placekey>
+    <placekey>Greece, NY</placekey>
+    <placekey>Braddock Point</placekey>
+    <placekey>Westpoint Marina</placekey>
+    <placekey>Braddock Bay Park</placekey>
+   </place>
+  </keywords>
+  <accconst>None</accconst>
+  <useconst>Public domain data from the U.S. Government are freely redistributable with proper metadata and source attribution. Please recognize the U.S. Geological Survey (USGS) as the source of this information.</useconst>
+  <ptcontac>
+   <cntinfo>
+    <cntorgp>
+     <cntorg>U.S. Geological Survey</cntorg>
+     <cntper>Sandra Brosnahan</cntper>
+    </cntorgp>
+    <cntpos>Physical Scientist</cntpos>
+    <cntaddr>
+     <addrtype>mailing and physical address</addrtype>
+     <address>384 Woods Hole Road</address>
+     <city>Woods Hole</city>
+     <state>Massachusetts</state>
+     <postal>02543-1598</postal>
+    </cntaddr>
+    <cntvoice>508-548-8700 x2265</cntvoice>
+    <cntfax>508-457-2310</cntfax>
+    <cntemail>sbrosnahan@usgs.gov</cntemail>
+   </cntinfo>
+  </ptcontac>
+  <browse>
+   <browsen>https://www.sciencebase.gov/catalog/file/get/5a5cb30ce4b06e28e9bcd24b/?name=2017042FA_BraddockBay_Photos_browse.jpg</browsen>
+   <browsed>example of an aerial image from field activity 2017-042-FA</browsed>
+   <browset>JPEG</browset>
+  </browse>
+ </idinfo>
+ <dataqual>
+  <attracc>
+   <attraccr>The Ricoh GRII HD cameras used on the UAS acquires photos at 16.2 Megapixels, with file sizes generally between 4 and 6 MB on disc, depending on image complexity. The GPS used on the UAS has theoretical accuracies of 3 meters horizontally and 10 m vertically. Photogrammetric processing using ground control points produces estimates of camera location and attitude (roll, pitch, and yaw) with much higher accuracies. Tables containing position and attitude estimates derived from photogrammetric post-processing are available in this data release.</attraccr>
+  </attracc>
+  <logic>Photographs were renamed to include survey ID, Camera ID, flight ID, date and time (based on UTC), and original filename to ensure no duplicated filenames. And EXIF header information was modified for all photos to include standard USGS tags. Some photographs may be auto-rotated during data management and transfer, however, this does not affect camera location, processing results, or final products in Photoscan software.</logic>
+  <complete>Twenty-two (f1-f22) UAS flights were conducted in Braddock Bay survey areas along the NY Lake Ontario shoreline. Flights 2, 8, 9, 14, and 15 were aborted for reasons including errors in the telemetry log, loss of contact with GPS base station, and poor photo quality. During the 17 successful flights, photographs were captured every 2 seconds. Gaps in sequential 2 second photo intervals exist because some photos were deleted, for example, because of overexposure, or multiple photos of the landing pad per flight as the UAS was taking off and landing.  Note that when creating the photogrammetry projects, at the processor's discretion, some photos, usually those from the take-off and landing, were not imported into PhotoScan.  However, those images are included here for thoroughness of archiving the RAW images.
+
+Flights 1-22 were acquired in Braddock Bay vicinity and are associated with a WHCMSC AIM (Woods Hole Coastal and Marine Science Center - Aerial Imaging and Mapping group) internal project identifier UID 35.</complete>
+  <posacc>
+   <horizpa>
+    <horizpar>Horizontal positions recorded in the UAS flight logs and later applied to the EXIF portion of the images were derived from a mRo GPS (u-Blox Neo-M8N / 3DR SOLO Upgrade), which receives signals from GPS and GLONASS satellites in WGS84 (G1150) EPSG::7660, but is otherwise uncorrected. Horizontal locations are considered accurate to approximately 3 meters, but may be off by as much as 10 meters due to UAS flight path and uncertainty associated with the geotagging process.</horizpar>
+   </horizpa>
+   <vertacc>
+    <vertaccr>Vertical positions recorded in the UAS flight logs and later applied to the EXIF portion of the images are ellipsoidal heights and were derived from a a mRo GPS (u-Blox Neo-M8N / 3DR SOLO Upgrade), which receives signals from GPS and GLONASS satellites, but is otherwise uncorrected. Vertical locations are less accurate than horizontal positions and may be off by more than 10 meters.</vertaccr>
+   </vertacc>
+  </posacc>
+  <lineage>
+   <srcinfo>
+    <srccite>
+     <citeinfo>
+      <origin>U.S. Geological Survey</origin>
+      <pubdate>Unpublished Material</pubdate>
+      <title>unpublished raw photos collected from a UAS during field activity 2017-042-FA</title>
+      <geoform>raster digital data</geoform>
+      <onlink>https://cmgds.marine.usgs.gov/fan_info.php?fan=2017-042-FA</onlink>
+     </citeinfo>
+    </srccite>
+    <typesrc>disc</typesrc>
+    <srctime>
+     <timeinfo>
+      <rngdates>
+       <begdate>20170710</begdate>
+       <enddate>20170711</enddate>
+      </rngdates>
+     </timeinfo>
+     <srccurr>ground condition</srccurr>
+    </srctime>
+    <srccitea>raw photos from FA 2017-042</srccitea>
+    <srccontr>These JPEG images are used to produce geotagged photographs and subsequent photogrammetric products.	JPEG photographs from each of the UAS flights were downloaded from the respective Ricoh cameras and saved according to the flight number (which is approximately the duration of one UAS battery lifespan (maximum 15 minutes). One telemetry log for the UAS that contains position in x,y,z, time, pitch, roll, yaw, course, and mode (saved in .tlog, .kmz, .gpx, and .csv format) and one folder of photos exists for each of the 17 successful flights. These data were used to produce the geotagged photos described in the processing steps.</srccontr>
+   </srcinfo>
+   <procstep>
+    <procdesc>All aerial photographs were acquired with one of two Ricoh GRII cameras (labeled RI01 and RI02). Ricoh cameras do no contain an internal GPS, and an external GPS mounted on the UAS is used to add geopositioning information during post-processing (described later). One of the two cameras was mounted on a 3DR Solo quadcopter unmanned aerial system (UAS; FAA number- FA3R4LWWY9) for each flight. Flights were flown along pre-planned lines and lasted the duration of the UAS battery life (maximum 15 minutes) or until the flight was completed or aborted. The camera was set to record images at 2-second intervals, activated before takeoff, and deactivated after landing. Preflight photos of UTC time displayed on a smartphone used as an accurate timepiece were captured with the camera and used to monitor camera clock drift. Camera time and UTC time were never different (to a 1 second accuracy) during this survey. However, the UAS GPS was recording in local (EDT) time and the camera was recording in UTC, therefore a 14400 second correction was applied (explained in the next process step).</procdesc>
+    <procdate>201709</procdate>
+    <proccont>
+     <cntinfo>
+      <cntorgp>
+       <cntorg>U.S. Geological Survey, Woods Hole Coastal and Marine Science Center</cntorg>
+       <cntper>Christopher R. Sherwood</cntper>
+      </cntorgp>
+      <cntpos>Research Oceanographer</cntpos>
+      <cntaddr>
+       <addrtype>mailing and physical address</addrtype>
+       <address>384 Woods Hole Road</address>
+       <city>Woods Hole</city>
+       <state>Massachusetts</state>
+       <postal>02543</postal>
+       <country>U.S.A.</country>
+      </cntaddr>
+      <cntvoice>508-548-8700 x2269</cntvoice>
+      <cntfax>508 457 2310</cntfax>
+      <cntemail>csherwood@usgs.gov</cntemail>
+     </cntinfo>
+    </proccont>
+   </procstep>
+   <procstep>
+    <procdesc>The JPEG images were geotagged by adding location information to standard GPS tags (GPSLatitude, GPSLatitudeRef, GPSLongitude, GPSLongitudeRef, GPSAltitude, GPSTimeStamp, GPSDateStamp) in the EXIF headers. Image descriptions, Artist credit, Copyright, caption information, keywords, and credits/origin tags were also added, and the images were renamed. All of the following process steps were conducted by the same person using pyExifToolGUI (version 0.50), ExifTools (version: 10.61), and Namexif (version 1.7).
+
+1. Telemetry logs recorded in Mission Planner software (version 1.3.49) and saved as GPX files were used in pyExifToolGUI to geotag the JPEG photos. PyExifTool provides a graphical frontend for ExifTools and only requires 3 user inputs to complete geotagging the raw photos. Geotagging was completed per flight since there was a single .gpx file and image folder file per flight. In pyExifTool under the 'Edit Data' tab, Geotagging is selected and the user supplies the folder containing the images to be geotagged, the GPS log file (a GPX file for this survey), and a Geosync time to account for any offset between the GPS and camera. A Geosync time of -14400 sec was supplied here for all 2017-042-FA flights, because GPS time was recorded in EDT, which is 4 hours or 14400 sec behind UTC time. There was no other 'time drift' difference noted during the survey between the camera and the GPS clocks.
+
+2. After all the JPEG photos were geotagged in pyExifToolGUI, ExifTools was used to update several additional tags for all the photos. The updated tags include: -Copyright -CopyrightNotice, -ImageDescription, -Caption-Abstract, -Caption, -keywords, -comment, -Credit, -Contact, -Artist
+
+JPEG tags:
+&gt;Comment: Photo from a down-looking UAS camera during USGS Field Activity 2017-042-FA near Braddock Bay, NY (https://cmgds.marine.usgs.gov/fan_info.php?fan=2017-042-FA)
+
+EXIF tags:
+&gt;ImageDescription: Photographs of the Lake Ontario shoreline, Braddock Bay vicinity, New York, USA from survey 2017-042-FA.
+&gt;Artist: Sandy Brosnahan
+&gt;Copyright: Public Domain - please credit U.S. Geological Survey
+
+IPTC tags:
+&gt;Credit: U.S. Geological Survey
+&gt;Contact: WHSC_data_contact@usgs.gov
+&gt;Keywords: Lake Ontario / New York / 2017-042-FA / UAS / aerial imagery / USGS
+&gt;CopyrightNotice: Public Domain - please credit U.S. Geological Survey
+&gt;Caption-Abstract:  Photographs of the Lake Ontario shoreline, Braddock Bay vicinity, New York, USA from survey 2017-042-FA.
+
+XMP tags:
+&gt;Caption: Photographs of the Lake Ontario shoreline, Braddock Bay vicinity, New York, USA from survey 2017-042-FA.
+
+3. Finally, all the JPEG images were renamed with Namexif ( version 1.7: http://www.digicamsoft.com/softnamexif.html) to ensure unique filenames and compliance with USGS Coastal and Marine Geology Program's best practices for image naming convention. Images were renamed with a survey ID prefix followed by a local USGS UID, which corresponds to a distinct UAS project; a camera ID that distinguishes among USGS cameras by make, model, and camera number;  the image acquisition date and time in ISO8601 format(UTC; and a suffix with the original image name. For example, image name '2017042FA_U035RI01_20170711T162904Z_A2018661.JPG', 2017042FA is the internal survey ID, U035 is the internal UID, RI01 is the internal camera ID, 20170711 is the UTC date in format YYYYMMDD. A 'T' is used to separate UTC date from UTC zulu time in format HHMMSS followed by a 'Z', and A2018661 is the original raw photo name appended to the end of the new filename.</procdesc>
+    <procdate>20170822</procdate>
+    <proccont>
+     <cntinfo>
+      <cntperp>
+       <cntper>Elizabeth A. Pendleton</cntper>
+       <cntorg>U.S. Geological Survey</cntorg>
+      </cntperp>
+      <cntpos>Geologist</cntpos>
+      <cntaddr>
+       <addrtype>mailing and physical address</addrtype>
+       <address>U.S. Geological Survey</address>
+       <address>384 Woods Hole Rd.</address>
+       <city>Woods Hole</city>
+       <state>MA</state>
+       <postal>02543-1598</postal>
+      </cntaddr>
+      <cntvoice>508-548-8700 x2259</cntvoice>
+      <cntfax>508-457-2310</cntfax>
+      <cntemail>ependleton@usgs.gov</cntemail>
+     </cntinfo>
+    </proccont>
+   </procstep>
+  </lineage>
+ </dataqual>
+ <spdoinfo>
+  <direct>Raster</direct>
+  <rastinfo>
+   <rasttype>Pixel</rasttype>
+   <rowcount>3264</rowcount>
+   <colcount>4352</colcount>
+  </rastinfo>
+ </spdoinfo>
+ <spref>
+  <horizsys>
+   <geograph>
+    <latres>0.000001</latres>
+    <longres>0.000001</longres>
+    <geogunit>Decimal degrees</geogunit>
+   </geograph>
+   <geodetic>
+    <horizdn>D_WGS_1984</horizdn>
+    <ellips>WGS_1984</ellips>
+    <semiaxis>6378137.0</semiaxis>
+    <denflat>298.257224</denflat>
+   </geodetic>
+  </horizsys>
+  <vertdef>
+   <altsys>
+    <altdatum>IGS08 (EPOCH:2017.8707)</altdatum>
+    <altres>0.01</altres>
+    <altunits>meters</altunits>
+    <altenc>Attribute values</altenc>
+   </altsys>
+  </vertdef>
+ </spref>
+ <eainfo>
+  <overview>
+   <eaover>There are no additional attributes besides the tags described in data quality section associated with these images.</eaover>
+   <eadetcit>USGS Field Activity 2017-042-FA</eadetcit>
+  </overview>
+ </eainfo>
+ <distinfo>
+  <distrib>
+   <cntinfo>
+    <cntorgp>
+     <cntorg>U.S. Geological Survey - ScienceBase</cntorg>
+    </cntorgp>
+    <cntaddr>
+     <addrtype>mailing and physical address</addrtype>
+     <address>Denver Federal Center, Building 810, Mail Stop 302</address>
+     <city>Denver</city>
+     <state>CO</state>
+     <postal>80225</postal>
+    </cntaddr>
+    <cntvoice>1-888- 275-8747</cntvoice>
+    <cntemail>sciencebase@usgs.gov</cntemail>
+   </cntinfo>
+  </distrib>
+  <resdesc>This data release includes raw data in the form of geotagged aerial images in JPEG format. The aerial images are distributed in 4 zip files, each containing folders of images, organized by flight number and limited to 10 GB in size. In total there are over 5500 images. The zip filenames are: 2017042FA_U35_F1toF6_BraddockBay.zip (1353 images); 2017042FA_U35_F7toF13_BraddockBay.zip (1794 images); 2017042FA_U35_F16toF19_BraddockBay.zip  (1353 images); 2017042FA_U35_F20toF22_BraddockBay.zip (636 images). Flights 1, 3 and 4-7 were acquired on July 10 and are used in the Braddock West project. Flights 10-13 and 16-22 were acquired on July 11 and are used in the Braddock East project.
+Additionally, the FGDC CSDGM metadata (2017042FA_BraddockBay_Photos.xml) and a browse graphic (2017042FA_Braddock_Photos_browse.jpg) accompanies the images in each zip file.</resdesc>
+  <distliab>Neither the U.S. Government, the Department of the Interior, nor the USGS, nor any of their employees, contractors, or subcontractors, make any warranty, express or implied, nor assume any legal liability or responsibility for the accuracy, completeness, or usefulness of any information, apparatus, product, or process disclosed, nor represent that its use would not infringe on privately owned rights. The act of distribution shall not constitute any such warranty, and no responsibility is assumed by the U.S. Geological Survey in the use of these data or related materials. Any use of trade, product, or firm names is for descriptive purposes only and does not imply endorsement by the U.S. Government.</distliab>
+  <stdorder>
+   <digform>
+    <digtinfo>
+     <formname>JPEG</formname>
+     <formcont>Zipped files contain geotagged aerial images collected by the U.S. Geological Survey - Woods Hole Coastal and Marine Science Center along Braddock Bay, NY. These data are contained within folders organized by flight number along with the associated metadata and a browse graphic.</formcont>
+     <filedec>Use WinZip, 7zip, Peazip or pkUnzip</filedec>
+     <transize>9686</transize>
+    </digtinfo>
+    <digtopt>
+     <onlinopt>
+      <computer>
+       <networka>
+        <networkr>https://www.sciencebase.gov/catalog/item/5a5cb30ce4b06e28e9bcd24b</networkr>
+        <networkr>https://doi.org/10.5066/F74F1PX3</networkr>
+        <networkr>https://www.sciencebase.gov/catalog/file/get/5a5cb30ce4b06e28e9bcd24b/?name=2017042FA_U35_F1toF6_BraddockBay.zip</networkr>
+        <networkr>https://www.sciencebase.gov/catalog/file/get/5a5cb30ce4b06e28e9bcd24b/?name=2017042FA_U35_F7toF13_BraddockBay.zip</networkr>
+        <networkr>https://www.sciencebase.gov/catalog/file/get/5a5cb30ce4b06e28e9bcd24b/?name=2017042FA_U35_F16toF19_BraddockBay.zip</networkr>
+        <networkr>https://www.sciencebase.gov/catalog/file/get/5a5cb30ce4b06e28e9bcd24b/?name=2017042FA_U35_F20toF22_BraddockBay.zip</networkr>
+       </networka>
+      </computer>
+      <accinstr>The first link is to the page containing the data, the second link is to the publication landing page, and the subsequent links are to the specific set of UAS photographs grouped by flight as indicated in the zipfile filename.  Because each zip file dataset is over 1 GB, the user should go to the main landing page (first link) and use the large file download option to obtain the data. The links to the individual datasets may or may not work appropriately.</accinstr>
+     </onlinopt>
+    </digtopt>
+   </digform>
+   <fees>none</fees>
+  </stdorder>
+  <techpreq>These files require software capable of unzipping the archive, opening JPEG images and, if desired, capable or reading the associated EXIF information.</techpreq>
+ </distinfo>
+ <metainfo>
+  <metd>20180206</metd>
+  <metc>
+   <cntinfo>
+    <cntperp>
+     <cntper>Sandra Brosnahan</cntper>
+     <cntorg>U.S. Geological Survey</cntorg>
+    </cntperp>
+    <cntpos>Scientist</cntpos>
+    <cntaddr>
+     <addrtype>mailing and physical</addrtype>
+     <address>U.S. Geological Survey</address>
+     <address>384 Woods Hole Rd.</address>
+     <city>Woods Hole</city>
+     <state>MA</state>
+     <postal>02543-1598</postal>
+    </cntaddr>
+    <cntvoice>508-548-8700 x2265</cntvoice>
+    <cntfax>508-457-2310</cntfax>
+    <cntemail>sbrosnahan@usgs.gov</cntemail>
+   </cntinfo>
+  </metc>
+  <metstdn>Content Standard for Digital Geospatial Metadata</metstdn>
+  <metstdv>FGDC-STD-001-1998</metstdv>
+  <mettc>local time</mettc>
+  <metac>None</metac>
+  <metuc>None</metuc>
+ </metainfo>
+</metadata>

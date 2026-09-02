@@ -14,6 +14,8 @@ class ImageBase(BaseModel):
     width: int | None = None
     height: int | None = None
     processed: bool = False
+    processing_status: str = "pending"
+    processing_error: str | None = None
 
 
 class ImageCreate(ImageBase):

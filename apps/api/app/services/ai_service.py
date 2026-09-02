@@ -32,3 +32,14 @@ def predict(
     return model(
         image_path
     )
+
+def predict_batch(
+    image_paths: list[str],
+    batch_size: int = 4,
+):
+    model = load_model()
+
+    return model(
+        source=image_paths,
+        batch=batch_size,
+    )

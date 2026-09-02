@@ -1,0 +1,812 @@
+{
+  "mission": "mission_001",
+  "images_processed": 20,
+  "total_detections": 18,
+  "total_risk_score": 11.5431,
+  "average_risk_score": 0.5772,
+  "risk_summary": {
+    "VERY_LOW": 15,
+    "LOW": 5,
+    "MEDIUM": 0,
+    "HIGH": 0
+  },
+  "detections_by_class": {
+    "other_containers": 6,
+    "water_tank": 8,
+    "tire": 1,
+    "drum": 3
+  },
+  "class_weights": {
+    "coconut_shell": 1.0,
+    "drum": 1.0,
+    "other_containers": 1.0,
+    "tire": 1.0,
+    "water_tank": 1.0
+  },
+  "risk_thresholds": {
+    "very_low": "< 1.0",
+    "low": ">= 1.0 and < 3.0",
+    "medium": ">= 3.0 and < 5.0",
+    "high": ">= 5.0"
+  },
+  "highest_risk_images": [
+    {
+      "filename": "DJI_0004.jpg",
+      "location": {
+        "latitude": 43.306473,
+        "longitude": -77.706539,
+        "altitude": 86.23
+      },
+      "detections": [
+        {
+          "class_id": 2,
+          "class": "other_containers",
+          "confidence": 0.6880927085876465,
+          "bbox": {
+            "x1": 491.9429016113281,
+            "y1": 302.3748474121094,
+            "x2": 549.8347778320312,
+            "y2": 361.572509765625
+          }
+        },
+        {
+          "class_id": 2,
+          "class": "other_containers",
+          "confidence": 0.6196644902229309,
+          "bbox": {
+            "x1": 495.0658264160156,
+            "y1": 21.250732421875,
+            "x2": 553.1248168945312,
+            "y2": 74.56272888183594
+          }
+        },
+        {
+          "class_id": 2,
+          "class": "other_containers",
+          "confidence": 0.525016725063324,
+          "bbox": {
+            "x1": 479.5343017578125,
+            "y1": 374.7796936035156,
+            "x2": 530.8759155273438,
+            "y2": 427.5414123535156
+          }
+        },
+        {
+          "class_id": 2,
+          "class": "other_containers",
+          "confidence": 0.49975597858428955,
+          "bbox": {
+            "x1": 479.18328857421875,
+            "y1": 105.49455261230469,
+            "x2": 531.280029296875,
+            "y2": 156.45748901367188
+          }
+        }
+      ],
+      "risk_score": 2.3325,
+      "risk_level": "LOW",
+      "annotated_image": "results/images/DJI_0004.jpg"
+    },
+    {
+      "filename": "DJI_0009.jpg",
+      "location": {
+        "latitude": 43.306472799999995,
+        "longitude": -77.7065383000018,
+        "altitude": 113.84
+      },
+      "detections": [
+        {
+          "class_id": 1,
+          "class": "drum",
+          "confidence": 0.607774019241333,
+          "bbox": {
+            "x1": 15.082335472106934,
+            "y1": 412.5361022949219,
+            "x2": 47.70014953613281,
+            "y2": 442.5836181640625
+          }
+        },
+        {
+          "class_id": 2,
+          "class": "other_containers",
+          "confidence": 0.5448856353759766,
+          "bbox": {
+            "x1": 300.12420654296875,
+            "y1": 185.3417205810547,
+            "x2": 323.7680358886719,
+            "y2": 208.3719482421875
+          }
+        },
+        {
+          "class_id": 2,
+          "class": "other_containers",
+          "confidence": 0.5317563414573669,
+          "bbox": {
+            "x1": 298.5491027832031,
+            "y1": 534.5535888671875,
+            "x2": 322.1083679199219,
+            "y2": 560.4912109375
+          }
+        }
+      ],
+      "risk_score": 1.6844,
+      "risk_level": "LOW",
+      "annotated_image": "results/images/DJI_0009.jpg"
+    },
+    {
+      "filename": "DJI_0011.jpg",
+      "location": {
+        "latitude": 43.30647330000362,
+        "longitude": -77.70653800000001,
+        "altitude": 125.44
+      },
+      "detections": [
+        {
+          "class_id": 4,
+          "class": "water_tank",
+          "confidence": 0.8494110107421875,
+          "bbox": {
+            "x1": 100.82652282714844,
+            "y1": 123.98004150390625,
+            "x2": 184.6415252685547,
+            "y2": 211.40399169921875
+          }
+        },
+        {
+          "class_id": 4,
+          "class": "water_tank",
+          "confidence": 0.7179546356201172,
+          "bbox": {
+            "x1": 35.18748474121094,
+            "y1": 133.697265625,
+            "x2": 107.71478271484375,
+            "y2": 203.48553466796875
+          }
+        }
+      ],
+      "risk_score": 1.5674,
+      "risk_level": "LOW",
+      "annotated_image": "results/images/DJI_0011.jpg"
+    },
+    {
+      "filename": "DJI_0006.jpg",
+      "location": {
+        "latitude": 43.30647449994763,
+        "longitude": -77.70653329999166,
+        "altitude": 97.79
+      },
+      "detections": [
+        {
+          "class_id": 4,
+          "class": "water_tank",
+          "confidence": 0.7945190072059631,
+          "bbox": {
+            "x1": 700.3617553710938,
+            "y1": 453.056396484375,
+            "x2": 898.5203247070312,
+            "y2": 637.10595703125
+          }
+        },
+        {
+          "class_id": 3,
+          "class": "tire",
+          "confidence": 0.5131020545959473,
+          "bbox": {
+            "x1": 1089.834228515625,
+            "y1": 524.2411499023438,
+            "x2": 1168.8372802734375,
+            "y2": 592.7167358398438
+          }
+        }
+      ],
+      "risk_score": 1.3076,
+      "risk_level": "LOW",
+      "annotated_image": "results/images/DJI_0006.jpg"
+    },
+    {
+      "filename": "DJI_0020.jpeg",
+      "location": {
+        "latitude": 43.30675320003029,
+        "longitude": -77.7062688,
+        "altitude": 157.68
+      },
+      "detections": [
+        {
+          "class_id": 4,
+          "class": "water_tank",
+          "confidence": 0.7782891988754272,
+          "bbox": {
+            "x1": 47.636390686035156,
+            "y1": 93.66790008544922,
+            "x2": 105.86093139648438,
+            "y2": 153.6024169921875
+          }
+        },
+        {
+          "class_id": 4,
+          "class": "water_tank",
+          "confidence": 0.5278499722480774,
+          "bbox": {
+            "x1": 29.894309997558594,
+            "y1": 24.312267303466797,
+            "x2": 83.7297592163086,
+            "y2": 67.83374786376953
+          }
+        }
+      ],
+      "risk_score": 1.3061,
+      "risk_level": "LOW",
+      "annotated_image": "results/images/DJI_0020.jpeg"
+    },
+    {
+      "filename": "DJI_0017.jpeg",
+      "location": {
+        "latitude": 43.30648520005949,
+        "longitude": -77.7065275999431,
+        "altitude": 156.85
+      },
+      "detections": [
+        {
+          "class_id": 4,
+          "class": "water_tank",
+          "confidence": 0.7579672336578369,
+          "bbox": {
+            "x1": 206.0864715576172,
+            "y1": 154.678955078125,
+            "x2": 300.94415283203125,
+            "y2": 250.99034118652344
+          }
+        }
+      ],
+      "risk_score": 0.758,
+      "risk_level": "VERY_LOW",
+      "annotated_image": "results/images/DJI_0017.jpeg"
+    },
+    {
+      "filename": "DJI_0013.jpeg",
+      "location": {
+        "latitude": 43.3064724,
+        "longitude": -77.70653760005875,
+        "altitude": 136.52
+      },
+      "detections": [
+        {
+          "class_id": 4,
+          "class": "water_tank",
+          "confidence": 0.6734355688095093,
+          "bbox": {
+            "x1": 333.41107177734375,
+            "y1": 237.5161590576172,
+            "x2": 382.3736572265625,
+            "y2": 293.16851806640625
+          }
+        }
+      ],
+      "risk_score": 0.6734,
+      "risk_level": "VERY_LOW",
+      "annotated_image": "results/images/DJI_0013.jpeg"
+    },
+    {
+      "filename": "DJI_0019.jpeg",
+      "location": {
+        "latitude": 43.30665479996125,
+        "longitude": -77.70636540000696,
+        "altitude": 157.62
+      },
+      "detections": [
+        {
+          "class_id": 4,
+          "class": "water_tank",
+          "confidence": 0.6629196405410767,
+          "bbox": {
+            "x1": 52.500892639160156,
+            "y1": 60.771690368652344,
+            "x2": 147.0135040283203,
+            "y2": 146.6757354736328
+          }
+        }
+      ],
+      "risk_score": 0.6629,
+      "risk_level": "VERY_LOW",
+      "annotated_image": "results/images/DJI_0019.jpeg"
+    },
+    {
+      "filename": "DJI_0012.jpg",
+      "location": {
+        "latitude": 43.30647330000362,
+        "longitude": -77.70653739997975,
+        "altitude": 131.01
+      },
+      "detections": [
+        {
+          "class_id": 1,
+          "class": "drum",
+          "confidence": 0.6253926753997803,
+          "bbox": {
+            "x1": 293.6116027832031,
+            "y1": 456.4229736328125,
+            "x2": 355.63946533203125,
+            "y2": 520.5770263671875
+          }
+        }
+      ],
+      "risk_score": 0.6254,
+      "risk_level": "VERY_LOW",
+      "annotated_image": "results/images/DJI_0012.jpg"
+    },
+    {
+      "filename": "DJI_0014.jpeg",
+      "location": {
+        "latitude": 43.306473,
+        "longitude": -77.70653719998738,
+        "altitude": 142.37
+      },
+      "detections": [
+        {
+          "class_id": 1,
+          "class": "drum",
+          "confidence": 0.6253926753997803,
+          "bbox": {
+            "x1": 293.6116027832031,
+            "y1": 456.4229736328125,
+            "x2": 355.63946533203125,
+            "y2": 520.5770263671875
+          }
+        }
+      ],
+      "risk_score": 0.6254,
+      "risk_level": "VERY_LOW",
+      "annotated_image": "results/images/DJI_0014.jpeg"
+    }
+  ],
+  "images": [
+    {
+      "filename": "DJI_0001.jpg",
+      "location": {
+        "latitude": 43.306473999999994,
+        "longitude": -77.70654020003848,
+        "altitude": 77.63
+      },
+      "detections": [],
+      "risk_score": 0,
+      "risk_level": "VERY_LOW",
+      "annotated_image": "results/images/DJI_0001.jpg"
+    },
+    {
+      "filename": "DJI_0002.jpg",
+      "location": {
+        "latitude": 43.30647359994042,
+        "longitude": -77.70653929995018,
+        "altitude": 77.65
+      },
+      "detections": [],
+      "risk_score": 0,
+      "risk_level": "VERY_LOW",
+      "annotated_image": "results/images/DJI_0002.jpg"
+    },
+    {
+      "filename": "DJI_0003.jpg",
+      "location": {
+        "latitude": 43.30647620000667,
+        "longitude": -77.70653769999822,
+        "altitude": 80.09
+      },
+      "detections": [],
+      "risk_score": 0,
+      "risk_level": "VERY_LOW",
+      "annotated_image": "results/images/DJI_0003.jpg"
+    },
+    {
+      "filename": "DJI_0004.jpg",
+      "location": {
+        "latitude": 43.306473,
+        "longitude": -77.706539,
+        "altitude": 86.23
+      },
+      "detections": [
+        {
+          "class_id": 2,
+          "class": "other_containers",
+          "confidence": 0.6880927085876465,
+          "bbox": {
+            "x1": 491.9429016113281,
+            "y1": 302.3748474121094,
+            "x2": 549.8347778320312,
+            "y2": 361.572509765625
+          }
+        },
+        {
+          "class_id": 2,
+          "class": "other_containers",
+          "confidence": 0.6196644902229309,
+          "bbox": {
+            "x1": 495.0658264160156,
+            "y1": 21.250732421875,
+            "x2": 553.1248168945312,
+            "y2": 74.56272888183594
+          }
+        },
+        {
+          "class_id": 2,
+          "class": "other_containers",
+          "confidence": 0.525016725063324,
+          "bbox": {
+            "x1": 479.5343017578125,
+            "y1": 374.7796936035156,
+            "x2": 530.8759155273438,
+            "y2": 427.5414123535156
+          }
+        },
+        {
+          "class_id": 2,
+          "class": "other_containers",
+          "confidence": 0.49975597858428955,
+          "bbox": {
+            "x1": 479.18328857421875,
+            "y1": 105.49455261230469,
+            "x2": 531.280029296875,
+            "y2": 156.45748901367188
+          }
+        }
+      ],
+      "risk_score": 2.3325,
+      "risk_level": "LOW",
+      "annotated_image": "results/images/DJI_0004.jpg"
+    },
+    {
+      "filename": "DJI_0005.jpg",
+      "location": {
+        "latitude": 43.306472799999995,
+        "longitude": -77.70653810003357,
+        "altitude": 92.08
+      },
+      "detections": [],
+      "risk_score": 0,
+      "risk_level": "VERY_LOW",
+      "annotated_image": "results/images/DJI_0005.jpg"
+    },
+    {
+      "filename": "DJI_0006.jpg",
+      "location": {
+        "latitude": 43.30647449994763,
+        "longitude": -77.70653329999166,
+        "altitude": 97.79
+      },
+      "detections": [
+        {
+          "class_id": 4,
+          "class": "water_tank",
+          "confidence": 0.7945190072059631,
+          "bbox": {
+            "x1": 700.3617553710938,
+            "y1": 453.056396484375,
+            "x2": 898.5203247070312,
+            "y2": 637.10595703125
+          }
+        },
+        {
+          "class_id": 3,
+          "class": "tire",
+          "confidence": 0.5131020545959473,
+          "bbox": {
+            "x1": 1089.834228515625,
+            "y1": 524.2411499023438,
+            "x2": 1168.8372802734375,
+            "y2": 592.7167358398438
+          }
+        }
+      ],
+      "risk_score": 1.3076,
+      "risk_level": "LOW",
+      "annotated_image": "results/images/DJI_0006.jpg"
+    },
+    {
+      "filename": "DJI_0007.jpg",
+      "location": {
+        "latitude": 43.306474200023615,
+        "longitude": -77.70653689998973,
+        "altitude": 103.01
+      },
+      "detections": [],
+      "risk_score": 0,
+      "risk_level": "VERY_LOW",
+      "annotated_image": "results/images/DJI_0007.jpg"
+    },
+    {
+      "filename": "DJI_0008.jpg",
+      "location": {
+        "latitude": 43.30647340000551,
+        "longitude": -77.70653789999699,
+        "altitude": 108.23
+      },
+      "detections": [],
+      "risk_score": 0,
+      "risk_level": "VERY_LOW",
+      "annotated_image": "results/images/DJI_0008.jpg"
+    },
+    {
+      "filename": "DJI_0009.jpg",
+      "location": {
+        "latitude": 43.306472799999995,
+        "longitude": -77.7065383000018,
+        "altitude": 113.84
+      },
+      "detections": [
+        {
+          "class_id": 1,
+          "class": "drum",
+          "confidence": 0.607774019241333,
+          "bbox": {
+            "x1": 15.082335472106934,
+            "y1": 412.5361022949219,
+            "x2": 47.70014953613281,
+            "y2": 442.5836181640625
+          }
+        },
+        {
+          "class_id": 2,
+          "class": "other_containers",
+          "confidence": 0.5448856353759766,
+          "bbox": {
+            "x1": 300.12420654296875,
+            "y1": 185.3417205810547,
+            "x2": 323.7680358886719,
+            "y2": 208.3719482421875
+          }
+        },
+        {
+          "class_id": 2,
+          "class": "other_containers",
+          "confidence": 0.5317563414573669,
+          "bbox": {
+            "x1": 298.5491027832031,
+            "y1": 534.5535888671875,
+            "x2": 322.1083679199219,
+            "y2": 560.4912109375
+          }
+        }
+      ],
+      "risk_score": 1.6844,
+      "risk_level": "LOW",
+      "annotated_image": "results/images/DJI_0009.jpg"
+    },
+    {
+      "filename": "DJI_0010.jpg",
+      "location": {
+        "latitude": 43.30647330000362,
+        "longitude": -77.70653850000001,
+        "altitude": 119.88
+      },
+      "detections": [],
+      "risk_score": 0,
+      "risk_level": "VERY_LOW",
+      "annotated_image": "results/images/DJI_0010.jpg"
+    },
+    {
+      "filename": "DJI_0011.jpg",
+      "location": {
+        "latitude": 43.30647330000362,
+        "longitude": -77.70653800000001,
+        "altitude": 125.44
+      },
+      "detections": [
+        {
+          "class_id": 4,
+          "class": "water_tank",
+          "confidence": 0.8494110107421875,
+          "bbox": {
+            "x1": 100.82652282714844,
+            "y1": 123.98004150390625,
+            "x2": 184.6415252685547,
+            "y2": 211.40399169921875
+          }
+        },
+        {
+          "class_id": 4,
+          "class": "water_tank",
+          "confidence": 0.7179546356201172,
+          "bbox": {
+            "x1": 35.18748474121094,
+            "y1": 133.697265625,
+            "x2": 107.71478271484375,
+            "y2": 203.48553466796875
+          }
+        }
+      ],
+      "risk_score": 1.5674,
+      "risk_level": "LOW",
+      "annotated_image": "results/images/DJI_0011.jpg"
+    },
+    {
+      "filename": "DJI_0012.jpg",
+      "location": {
+        "latitude": 43.30647330000362,
+        "longitude": -77.70653739997975,
+        "altitude": 131.01
+      },
+      "detections": [
+        {
+          "class_id": 1,
+          "class": "drum",
+          "confidence": 0.6253926753997803,
+          "bbox": {
+            "x1": 293.6116027832031,
+            "y1": 456.4229736328125,
+            "x2": 355.63946533203125,
+            "y2": 520.5770263671875
+          }
+        }
+      ],
+      "risk_score": 0.6254,
+      "risk_level": "VERY_LOW",
+      "annotated_image": "results/images/DJI_0012.jpg"
+    },
+    {
+      "filename": "DJI_0013.jpeg",
+      "location": {
+        "latitude": 43.3064724,
+        "longitude": -77.70653760005875,
+        "altitude": 136.52
+      },
+      "detections": [
+        {
+          "class_id": 4,
+          "class": "water_tank",
+          "confidence": 0.6734355688095093,
+          "bbox": {
+            "x1": 333.41107177734375,
+            "y1": 237.5161590576172,
+            "x2": 382.3736572265625,
+            "y2": 293.16851806640625
+          }
+        }
+      ],
+      "risk_score": 0.6734,
+      "risk_level": "VERY_LOW",
+      "annotated_image": "results/images/DJI_0013.jpeg"
+    },
+    {
+      "filename": "DJI_0014.jpeg",
+      "location": {
+        "latitude": 43.306473,
+        "longitude": -77.70653719998738,
+        "altitude": 142.37
+      },
+      "detections": [
+        {
+          "class_id": 1,
+          "class": "drum",
+          "confidence": 0.6253926753997803,
+          "bbox": {
+            "x1": 293.6116027832031,
+            "y1": 456.4229736328125,
+            "x2": 355.63946533203125,
+            "y2": 520.5770263671875
+          }
+        }
+      ],
+      "risk_score": 0.6254,
+      "risk_level": "VERY_LOW",
+      "annotated_image": "results/images/DJI_0014.jpeg"
+    },
+    {
+      "filename": "DJI_0015.jpeg",
+      "location": {
+        "latitude": 43.30647340000551,
+        "longitude": -77.70653850000001,
+        "altitude": 148.04
+      },
+      "detections": [],
+      "risk_score": 0,
+      "risk_level": "VERY_LOW",
+      "annotated_image": "results/images/DJI_0015.jpeg"
+    },
+    {
+      "filename": "DJI_0016.jpeg",
+      "location": {
+        "latitude": 43.30647340000551,
+        "longitude": -77.706539,
+        "altitude": 152.56
+      },
+      "detections": [],
+      "risk_score": 0,
+      "risk_level": "VERY_LOW",
+      "annotated_image": "results/images/DJI_0016.jpeg"
+    },
+    {
+      "filename": "DJI_0017.jpeg",
+      "location": {
+        "latitude": 43.30648520005949,
+        "longitude": -77.7065275999431,
+        "altitude": 156.85
+      },
+      "detections": [
+        {
+          "class_id": 4,
+          "class": "water_tank",
+          "confidence": 0.7579672336578369,
+          "bbox": {
+            "x1": 206.0864715576172,
+            "y1": 154.678955078125,
+            "x2": 300.94415283203125,
+            "y2": 250.99034118652344
+          }
+        }
+      ],
+      "risk_score": 0.758,
+      "risk_level": "VERY_LOW",
+      "annotated_image": "results/images/DJI_0017.jpeg"
+    },
+    {
+      "filename": "DJI_0018.jpeg",
+      "location": {
+        "latitude": 43.30655629998961,
+        "longitude": -77.70645830002665,
+        "altitude": 157.47
+      },
+      "detections": [],
+      "risk_score": 0,
+      "risk_level": "VERY_LOW",
+      "annotated_image": "results/images/DJI_0018.jpeg"
+    },
+    {
+      "filename": "DJI_0019.jpeg",
+      "location": {
+        "latitude": 43.30665479996125,
+        "longitude": -77.70636540000696,
+        "altitude": 157.62
+      },
+      "detections": [
+        {
+          "class_id": 4,
+          "class": "water_tank",
+          "confidence": 0.6629196405410767,
+          "bbox": {
+            "x1": 52.500892639160156,
+            "y1": 60.771690368652344,
+            "x2": 147.0135040283203,
+            "y2": 146.6757354736328
+          }
+        }
+      ],
+      "risk_score": 0.6629,
+      "risk_level": "VERY_LOW",
+      "annotated_image": "results/images/DJI_0019.jpeg"
+    },
+    {
+      "filename": "DJI_0020.jpeg",
+      "location": {
+        "latitude": 43.30675320003029,
+        "longitude": -77.7062688,
+        "altitude": 157.68
+      },
+      "detections": [
+        {
+          "class_id": 4,
+          "class": "water_tank",
+          "confidence": 0.7782891988754272,
+          "bbox": {
+            "x1": 47.636390686035156,
+            "y1": 93.66790008544922,
+            "x2": 105.86093139648438,
+            "y2": 153.6024169921875
+          }
+        },
+        {
+          "class_id": 4,
+          "class": "water_tank",
+          "confidence": 0.5278499722480774,
+          "bbox": {
+            "x1": 29.894309997558594,
+            "y1": 24.312267303466797,
+            "x2": 83.7297592163086,
+            "y2": 67.83374786376953
+          }
+        }
+      ],
+      "risk_score": 1.3061,
+      "risk_level": "LOW",
+      "annotated_image": "results/images/DJI_0020.jpeg"
+    }
+  ]
+}

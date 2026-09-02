@@ -8,13 +8,13 @@ if len(sys.argv) < 2:
 
 IMAGEM_REQUISITADA = sys.argv[1]
 
-MODEL = "../runs/detect/runs/horus_1280_50/weights/best.pt"
+MODEL = "../apps/api/models/best2.pt"
 
 model = YOLO(MODEL)
 
 results = model.predict(
     source=IMAGEM_REQUISITADA,
-    conf=0.25,
+    conf=0.49,
     save=True
 )
 

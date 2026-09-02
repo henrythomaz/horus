@@ -26,6 +26,31 @@ services:
       start_period: 10s
 
 
+  redis:
+    image: redis:7-alpine
+
+    command:
+      [
+        "redis-server",
+        "--appendonly",
+        "yes"
+      ]
+
+    volumes:
+      - redis_data:/data
+
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "redis-cli",
+          "ping"
+        ]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+
   api:
     build:
       context: ../../apps/api
@@ -33,11 +58,56 @@ services:
     env_file:
       - ../../apps/api/app/.env
 
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      YOLO_BATCH_SIZE: 4
+
     ports:
       - "8000:8000"
 
+    volumes:
+      - horus_storage:/app/storage
+
     depends_on:
       postgres:
+        condition: service_healthy
+
+      redis:
+        condition: service_healthy
+
+
+  worker:
+    build:
+      context: ../../apps/api
+
+    env_file:
+      - ../../apps/api/app/.env
+
+    environment:
+      REDIS_URL: redis://redis:6379/0
+      YOLO_BATCH_SIZE: 4
+
+    volumes:
+      - horus_storage:/app/storage
+
+    entrypoint:
+      - uv
+      - run
+
+    command:
+      [
+        "rq",
+        "worker",
+        "image_processing",
+        "--url",
+        "redis://redis:6379/0"
+      ]
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+      redis:
         condition: service_healthy
 
 
@@ -56,3 +126,5 @@ services:
 
 volumes:
   postgres_data:
+  redis_data:
+  horus_storage:

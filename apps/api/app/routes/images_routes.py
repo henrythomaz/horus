@@ -1,6 +1,7 @@
 from datetime import datetime, timezone
 from pathlib import Path
 from uuid import UUID
+import json
 
 from fastapi import (
     APIRouter,
@@ -15,6 +16,7 @@ from sqlalchemy.orm import Session
 
 from app.database import get_db
 from app.controllers import image_controller
+from app.queue import image_queue
 from app.models.ai.ai_model import AIModel
 from app.models.ai.dataset import Dataset
 from app.models.ai.model_run import ModelRun
@@ -24,6 +26,7 @@ from app.services.ai_service import load_model, predict
 from app.services.annotation_service import create_annotated_image
 from app.services.image_service import save_image
 from app.services.prediction_service import save_predictions
+from app.workers.image_worker import process_image_batch
 
 
 router = APIRouter(
@@ -55,6 +58,125 @@ def upload_image(
 
     return image
 
+@router.post(
+    "/{mission_id}/batch",
+    status_code=202,
+)
+def upload_images_batch(
+    mission_id: UUID,
+    files: list[UploadFile] = File(...),
+    latitude: list[float] | None = Form(None),
+    longitude: list[float] | None = Form(None),
+    altitude: list[float] | None = Form(None),
+    db: Session = Depends(get_db),
+):
+    if not files:
+        raise HTTPException(
+            status_code=400,
+            detail="No images provided",
+        )
+
+    if latitude and len(latitude) != len(files):
+        raise HTTPException(
+            status_code=400,
+            detail="Latitude count must match image count",
+        )
+
+    if longitude and len(longitude) != len(files):
+        raise HTTPException(
+            status_code=400,
+            detail="Longitude count must match image count",
+        )
+
+    if altitude and len(altitude) != len(files):
+        raise HTTPException(
+            status_code=400,
+            detail="Altitude count must match image count",
+        )
+
+    images_data = []
+
+    for index, file in enumerate(files):
+
+        path = save_image(file)
+
+        images_data.append(
+            {
+                "filename": (
+                    file.filename
+                    or "unknown"
+                ),
+                "path": path,
+                "latitude": (
+                    latitude[index]
+                    if latitude
+                    else None
+                ),
+                "longitude": (
+                    longitude[index]
+                    if longitude
+                    else None
+                ),
+                "altitude": (
+                    altitude[index]
+                    if altitude
+                    else None
+                ),
+            }
+        )
+
+    images = (
+        image_controller.create_many(
+            db=db,
+            mission_id=mission_id,
+            images_data=images_data,
+        )
+    )
+
+    image_ids = [
+        str(image.id)
+        for image in images
+    ]
+
+    for image in images:
+        image.processing_status = "queued"
+
+    db.commit()
+
+    try:
+        job = image_queue.enqueue(
+            process_image_batch,
+            image_ids,
+            job_timeout=3600,
+            result_ttl=86400,
+        )
+    except Exception as exc:
+        for image in images:
+            image.processing_status = "failed"
+            image.processing_error = (
+                f"Could not enqueue job: {exc}"
+            )
+
+        db.commit()
+
+        raise HTTPException(
+            status_code=503,
+            detail="Could not enqueue image processing",
+        ) from exc
+
+    return {
+        "job_id": job.id,
+        "mission_id": str(mission_id),
+        "images": [
+            {
+                "id": str(image.id),
+                "filename": image.filename,
+                "status": image.processing_status,
+            }
+            for image in images
+        ],
+        "count": len(images),
+    }
 
 @router.post("/{image_id}/process")
 def process_image(

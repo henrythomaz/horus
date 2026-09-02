@@ -8,7 +8,7 @@ from sqlalchemy import engine_from_config, pool
 from app.models import Base
 
 
-load_dotenv()
+load_dotenv("app/.env")
 
 
 config = context.config

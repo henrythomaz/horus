@@ -23,6 +23,8 @@ dependencies = [
     "ultralytics>=8.4.67",
     "uvicorn>=0.49.0",
     "python-multipart>=0.0.32",
+    "redis",
+    "rq",
 ]
 
 [tool.taskipy.tasks]

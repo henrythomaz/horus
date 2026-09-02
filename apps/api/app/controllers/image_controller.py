@@ -41,3 +41,30 @@ def get_by_mission(
         )
         .all()
     )
+
+
+def create_many(
+    db: Session,
+    mission_id: UUID,
+    images_data: list[dict],
+):
+    images = [
+        Image(
+            mission_id=mission_id,
+            filename=data["filename"],
+            path=data["path"],
+            latitude=data.get("latitude"),
+            longitude=data.get("longitude"),
+            altitude=data.get("altitude"),
+            processing_status="pending",
+        )
+        for data in images_data
+    ]
+
+    db.add_all(images)
+    db.commit()
+
+    for image in images:
+        db.refresh(image)
+
+    return images
