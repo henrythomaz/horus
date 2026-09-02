@@ -96,3 +96,6 @@ datasets/DATASET.yolov8/test/
 datasets/DATASET.yolov8/valid/
 datasets/DATASET.yolov8/valid/
 datasets/2017042FA_U35_F1toF6_BraddockBay/f1/
+runs/detect/runs/horus_1280_50/weights/
+runs/detect/runs/horus_1280_50-2/weights/
+runs/detect/runs/horus_1280_50-3/weights/
